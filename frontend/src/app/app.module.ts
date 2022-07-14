@@ -3,14 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material/material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

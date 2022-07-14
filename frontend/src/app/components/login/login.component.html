@@ -1,0 +1,39 @@
+<div class="container shadow">
+    <div class="content">
+    <form class="p-3"[formGroup]="loginForm">
+
+            <div class="topic">Login</div>
+
+            <div class="input-box form-group">
+                <input [class.is-invalid]="email?.invalid && email?.touched" class="form-control" formControlName ="email" type="email"  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$"  required>
+                <label>Enter your Email</label>
+                <div class="check container mt-4 pt-1" *ngIf="email?.invalid && email?.touched">
+                    <label *ngIf="email.errors?.['required']" class="text-danger">Email is Required</label>
+                    <label *ngIf="email.errors?.['pattern']" class="text-danger">Invalid Email</label>
+                </div>
+            </div>
+
+            <div class="input-box form-group">
+                <input [class.is-invalid]="password?.invalid && password?.touched" class="form-control" formControlName ="password" type="password" pattern='/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/' required>
+                <label>Enter Password</label>
+                <div class="check container mt-4 pt-1" *ngIf="password?.invalid && password?.touched">
+                    <label *ngIf="password.errors?.['required']" class="text-danger">Password is Required</label>
+                    <label *ngIf="password.errors?.['pattern']" class="text-danger">Password doesn't match the pattern</label>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <label>Don't have an account?</label>
+                <a href="/register">Sign Up</a>
+            </div>
+
+            <div class="input-box">
+                    <input type="submit" value="Submit">
+            </div>
+
+    </form>
+    <div class="image-box">
+     <img class="rounded" src="/assets/images/pexels-caio-56759.jpg" alt="Login">
+    </div>
+  </div>
+  </div>
