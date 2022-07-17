@@ -81,18 +81,19 @@
   left: 12px;
   display: 14px;
   color:  #24c2b8;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
 }
 .content .input-box input:invalid ~ div .text-danger{
   top: 100%;
   color:  #c23e24;
   padding: 0 4px;
-  background:  rgba(255, 255, 255, 0.1);
+  background:  rgba(255, 255, 255, 1);
+  border-radius: 4px;
 }
 
 .container .content .input-box .check{
-    background:  rgba(255, 200, 200, 0.5);
-    border-radius: 50%;
+  background:  rgba(254, 4, 4, 0.5);
+  border-radius: 60%;
   }
 
 .content .message-box{

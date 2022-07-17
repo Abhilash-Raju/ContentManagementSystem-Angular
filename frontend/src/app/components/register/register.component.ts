@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators } from '@angular/forms';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import {forbiddenNameValidator} from '../../shared/data-validator';
+import {PasswordValidator} from '../../shared/password-validator';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,27 +11,53 @@ import { FormBuilder,Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  registrationForm!: FormGroup;
+  constructor(private fb: FormBuilder, private authservice :AuthService) { }
 
   ngOnInit(): void {
+    this.registrationForm = this.fb.group({
+      userName: ['',[Validators.required]],
+      email: ['',[Validators.required]],
+      subscribe: [false],
+      password: ['',[Validators.required]],
+      confirmPassword: ['',Validators.required],
+    },{validator: PasswordValidator})
+
+    this.registrationForm.get('subscribe')?.valueChanges
+    .subscribe(checkedValue=>{
+      if (checkedValue){
+        return true
+      }
+      else {
+        return false
+      }
+    })
   }
-  // registrationForm = new FormGroup({
-  //   userName :new FormControl(''),
-  //   email :new FormControl(''),
-  //   password :new FormControl(''),
-  //   confirmPassword :new FormControl('')
-  // });
+
   get userName(){
     return this.registrationForm.controls['userName']
   }
   get email(){
     return this.registrationForm.controls['email']
   }
+  get password(){
+    return this.registrationForm.controls['password']
+  }
+  get confirmPassword(){
+    return this.registrationForm.controls['confirmPassword']
+  }
+  
+  get contactno(){
+    return this.registrationForm.controls['contactno']
 
-  registrationForm = this.fb.group({
-    userName: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(15)]],
-    email: ['',[Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
-    password: ['',[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/)]],
-    confirmPassword: ['',Validators.required],
-  })
+  }
+
+  onSubmit(){
+    console.log(this.registrationForm.value)
+    this.authservice.registeringUser(this.registrationForm.value)
+    .subscribe(
+      response =>console.log('Success!',response),
+      error =>console.log('Error!',error)
+    )
+  }
 }

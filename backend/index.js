@@ -11,7 +11,7 @@ const api = require('./routes/api');
 const app = express();
 
 //Set the port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 // Connecting to Database
 const db = "mongodb+srv://admin:1289lash@cmscluster.ia9hhvf.mongodb.net/CMSTest?retryWrites=true&w=majority";
@@ -49,7 +49,7 @@ app.get('/',(req,res)=>{
     res.send('Welcome to Home Page');
 })
 
-//Listen on port 4000
+//Listen on port 3000
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
 });

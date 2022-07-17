@@ -3,35 +3,66 @@
       <div class="image-box">
         <img class="p-4" src="/assets/images/pexels-drew-williams-2657669.jpg" alt="Sign Up">
     </div>
-    <form [formGroup]="registrationForm">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="topic">Sign Up</div>
 
       <div class="input-box form-group">
-        <input [class.is-invalid]="userName?.invalid && userName?.touched"  class="form-control" formControlName ="userName" type="text" required>
+        <input [class.is-invalid]="userName?.invalid && userName?.touched"  class="form-control" formControlName ="userName" type="text" pattern='^[A-Za-z]{6,15}[\S]$' required>
         <label>Enter your Name</label>
         <div class="check container mt-4 pt-1" *ngIf="userName?.invalid && (userName.dirty || userName?.touched)">
             <label *ngIf="userName.errors?.['required']" class="text-danger">Name is Required</label>
-            <label *ngIf="userName.errors?.['minlength']" class="text-danger">Name must have at least 6 characters</label>
+            <label *ngIf="userName.errors?.['pattern']" class="text-danger">Name must have at least 6 characters</label>
         </div>
       </div>
+      <div class="pt-1"></div>
 
       <div class="input-box form-group">
         <input [class.is-invalid]="email?.invalid && email?.touched" class="form-control" formControlName ="email" type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$" required>
         <label>Enter your Email</label>
         <div class="check container mt-4 pt-1" *ngIf="email?.invalid && (email.dirty || email?.touched)">
-            <label *ngIf="email.errors?.['required']" class="text-danger">Email is Required</label>
-            <label *ngIf="email.errors?.['pattern']" class="text-danger">Invalid Email</label>
+          <label *ngIf="email.errors?.['required']" class="text-danger">Email is Required</label>
+          <label *ngIf="email.errors?.['pattern']" class="text-danger">Invalid Email</label>
         </div>
       </div>
+      <div class="pt-1"></div>
 
-      <div class="input-box form-group">
-        <input class="form-control" formControlName ="password" type="password" pattern='/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/' required>
-        <label>Enter Password</label>
+      <!-- 
+        <div class="input-box form-group">
+        <input [class.is-invalid]="contactno?.invalid && contactno?.touched" class="form-control" formControlName ="contactno" type="text" pattern="^([0-9]{3})([-. ]?)([0-9]{3})([-. ]?)([0-9]{4})$" required>
+        <label>Enter your Contact Number</label>
+        <div class="check container mt-4 pt-1" *ngIf="contactno?.invalid && (contactno.dirty || contactno?.touched)">
+          <label *ngIf="contactno.errors?.['required']" class="text-danger">Contact Number is Required</label>
+          <label *ngIf="contactno.errors?.['pattern']" class="text-danger">Invalid Contact Number</label>
+        </div>
       </div>
-
+      <div class="pt-1"></div> -->
+      
       <div class="input-box form-group">
-        <input class="form-control" formControlName ="confirmPassword" type="password" pattern='/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/' required>
+        <input [class.is-invalid]="password?.invalid && password?.touched" class="form-control" formControlName ="password" type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$' required>
+        <label>Enter Password</label>
+        <div class="check container mt-4 pt-1" *ngIf="password?.invalid && password?.touched">
+            <label *ngIf="password.errors?.['required']" class="text-danger">Password is Required</label>
+            <label *ngIf="password.errors?.['pattern']" class="text-danger">Password doesn't match the requirement</label>
+        </div>
+      </div>
+      <div class="pt-1"></div>
+      
+      <div class="input-box form-group">
+        <input class="form-control" [class.is-invalid]="registrationForm.errors?.['misMatch']" formControlName ="confirmPassword" type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$'  required>
+        <!-- <input class="form-control" [class.is-invalid]="confirmPassword?.invalid && (confirmPassword.dirty || confirmPassword?.touched)" formControlName ="confirmPassword" type="password"  required> -->
         <label>Confirm Password</label>
+        <!-- <div class="check container mt-4 pt-1" *ngIf="confirmPassword?.invalid && (confirmPassword.dirty || confirmPassword?.touched)">
+          <label *ngIf="confirmPassword.errors?.['required']" class="text-danger">Password Confirmation is Required</label>
+        </div> -->
+        <div class="check container mt-4 pt-1" *ngIf="registrationForm.errors?.['misMatch']">
+          <label *ngIf="registrationForm.errors?.['misMatch']" class="text-danger">Password doesn't match</label>
+        </div>
+      </div>
+      <div class="pt-1"></div>
+      
+      <div class="message-box">
+        <input type="checkbox" formControlName ="subscribe" required>
+        <label>Sign Up as Admin</label>
       </div>
 
       <div class="message-box">

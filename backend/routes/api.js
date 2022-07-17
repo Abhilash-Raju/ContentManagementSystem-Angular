@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken');
 // const jwt = require('express-jwt');
 // const passport = require('passport');
 // const passportJWT = require('passport-jwt');
-
+const User = require('../models/user');
+let alert = require('alert'); 
 
 // Router setup
 router.get('/',(req,res)=>{
@@ -15,19 +16,32 @@ router.get('/',(req,res)=>{
 
 // Signup Router
 router.post('/signup', (req,res)=>{
-
-    
+   
     let userData = new User({
-        username: req.body.username,
+        username: req.body.userName,
         email: req.body.email,
-        password: req.body.password
+        sub:req.body.subscribe,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword
       });
 
-      if((userData.email)=='admin@domain.com'&&(userData.password)=='admin1234'){
+      if((userData.email)=='super@domain.com'&&(userData.password)=='Super@1234'){
        alert("Hi! You can't Sign Up with Admin Credentials")
         }
-         else {
-            userData.role = 'Author';
+        else if(userData.sub ==true){
+            userData.role = 'Admin';
+            userData.save((error,resgisteredUser)=>{
+            if(error){
+                console.log(error);
+            }
+            else{
+            let payload={subject:resgisteredUser};
+                let token =jwt.sign(payload,'secretKey')
+                res.status(200).send({token});
+            }})
+        }
+         else{
+            userData.role = 'AuthUser';
           // let user = new User(userData);
           userData.save((error,resgisteredUser)=>{
               if(error){
@@ -37,7 +51,6 @@ router.post('/signup', (req,res)=>{
                   let payload={subject:resgisteredUser};
                   let token =jwt.sign(payload,'secretKey')
                   res.status(200).send({token});
-                  // res.status(200).send(resgisteredUser);
               }
           })
       }
@@ -51,7 +64,7 @@ router.post('/login',(req,res)=>{
         password: req.body.password
       });
 
-      if(userData.email=="admin@domain.com" && userData.password=="admin1234")
+      if(userData.email=="super@domain.com" && userData.password=="Super@1234")
       {
         User.findOne({email : userData.email},(error,user)=>
         {
@@ -62,8 +75,10 @@ router.post('/login',(req,res)=>{
             else
             if(!user)
             {
-            userData.username="Admin";
-            userData.role="Admin";
+            userData.username="SuperAdmin";
+            userData.role="SuperAdmin";
+            userData.sub=true;
+            userData.confirmPassword="Super@1234";
             let payload={subject:userData};
             let token =jwt.sign(payload,'secretKey')
             userData.save()
@@ -97,7 +112,6 @@ router.post('/login',(req,res)=>{
                 let payload={subject:user};
                 let token =jwt.sign(payload,'secretKey')
                 res.status(200).send({token});
-                // res.status(200).send(user);
             }
         }
     })

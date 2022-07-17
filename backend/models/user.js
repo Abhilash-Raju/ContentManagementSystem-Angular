@@ -14,7 +14,15 @@ const userSchema = new Schema({
             unique: true, 
         },
         match:/[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
+    sub : {
+        type:Boolean,
+        required: true
+    },
     password: {
+        type:String, 
+        required: true
+        },
+    confirmPassword: {
         type:String, 
         required: true
         },

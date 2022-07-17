@@ -1,6 +1,6 @@
 <div class="container shadow">
     <div class="content">
-    <form class="p-3"[formGroup]="loginForm">
+    <form class="p-3"[formGroup]="loginForm" (ngSubmit)="loginUser()">
 
             <div class="topic">Login</div>
 
@@ -12,13 +12,14 @@
                     <label *ngIf="email.errors?.['pattern']" class="text-danger">Invalid Email</label>
                 </div>
             </div>
+            <div class="pt-1"></div>
 
             <div class="input-box form-group">
-                <input [class.is-invalid]="password?.invalid && password?.touched" class="form-control" formControlName ="password" type="password" pattern='/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/' required>
+                <input [class.is-invalid]="password?.invalid && password?.touched" class="form-control" formControlName ="password" type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$' required>
                 <label>Enter Password</label>
                 <div class="check container mt-4 pt-1" *ngIf="password?.invalid && password?.touched">
                     <label *ngIf="password.errors?.['required']" class="text-danger">Password is Required</label>
-                    <label *ngIf="password.errors?.['pattern']" class="text-danger">Password doesn't match the pattern</label>
+                    <label *ngIf="password.errors?.['pattern']" class="text-danger">Password doesn't match the requirement</label>
                 </div>
             </div>
 
@@ -36,4 +37,5 @@
      <img class="rounded" src="/assets/images/pexels-caio-56759.jpg" alt="Login">
     </div>
   </div>
+  <!-- {{loginForm.value| json}} -->
   </div>
