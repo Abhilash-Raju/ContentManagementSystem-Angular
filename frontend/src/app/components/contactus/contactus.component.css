@@ -1,0 +1,273 @@
+
+header.masthead {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 57px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url('/assets/images/contact-bg.jpg')
+  }
+  header.masthead:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.masthead .page-heading,
+  header.masthead .post-heading,
+  header.masthead .site-heading {
+    color: #fff;
+  }
+  header.masthead .page-heading,
+  header.masthead .site-heading {
+    text-align: center;
+  }
+  header.masthead .page-heading h1, header.masthead .page-heading .h1,
+  header.masthead .site-heading h1,
+  header.masthead .site-heading .h1 {
+    font-size: 3rem;
+  }
+  header.masthead .page-heading .subheading,
+  header.masthead .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.masthead .post-heading .meta,
+  header.masthead .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.masthead .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading .meta a {
+    color: #fff;
+  }
+  @media (min-width: 992px) {
+    header.masthead {
+      padding-top: 12.5rem;
+      padding-bottom: 12.5rem;
+    }
+    header.masthead .page-heading h1, header.masthead .page-heading .h1,
+  header.masthead .site-heading h1,
+  header.masthead .site-heading .h1 {
+      font-size: 5rem;
+    }
+    header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+      font-size: 3.5rem;
+    }
+    header.masthead .post-heading .subheading {
+      font-size: 1.875rem;
+    }
+  }
+
+/*  */
+
+
+.topic{
+  font-size: 22px;
+  font-weight: 500;
+  color:  #24c2b8;
+}
+form{
+  width: 100%;
+  margin-right: 30px;
+}
+.input-box{
+  height: 50px;
+  width: 100%;
+  margin: 16px 0;
+  position: relative;
+}
+.input-box input{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 16px;
+  background: #fae9fb;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+
+.message-box{
+  min-height: 50px;
+  position: relative;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+.message-box label{
+  font-size: 16px;
+  color: #636c72;
+  left: 18px;
+  top: 6px;
+  padding: 5px;
+}
+textarea{
+    background: #fae9fb;
+    resize: vertical;
+}
+
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+textarea.form-control {
+    min-height: calc(1.5em + 0.75rem + 2px);
+  }
+  textarea.form-control-sm {
+    min-height: calc(1.5em + 0.5rem + 2px);
+  }
+  textarea.form-control-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+  }
+ 
+
+  .form-floating input,
+.form-floating textarea {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.form-floating input:focus,
+.form-floating textarea:focus {
+  box-shadow: none;
+  color:  #24c2b8;
+  background: rgba(255, 255, 255, 1);
+}
+
+@media (max-width:900px) {
+  form{
+    width: 100%;
+    margin-left: 30px;
+  }
+}
+
+.btn {
+    display: inline-block;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 800;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 1rem 1.75rem;
+    font-size: 0.875rem;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+  }
+  .btn:hover {
+    color: #212529;
+  }
+  .btn-check:focus + .btn, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 133, 161, 0.25);
+  }
+  .btn:disabled, .btn.disabled, fieldset:disabled .btn {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #0085A1;
+    border-color: #0085A1;
+  }
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #007189;
+    border-color: #006a81;
+  }
+   .btn-primary:focus {
+    color: #fff;
+    background-color: #007189;
+    border-color: #006a81;
+    box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  }
+  .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #006a81;
+    border-color: #006479;
+  }
+  .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  }
+  .btn-primary:disabled, .btn-primary.disabled {
+    color: #fff;
+    background-color: #0085A1;
+    border-color: #0085A1;
+  }
+  
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  }
+  .input-group > .form-control,
+  .input-group > .form-select {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+  }
+  .input-group > .form-control:focus,
+  .input-group > .form-select:focus {
+    z-index: 3;
+  }
+  .input-group .btn {
+    position: relative;
+    z-index: 2;
+  }
+  .input-group .btn:focus {
+    z-index: 3;
+  }
+  

@@ -28,7 +28,7 @@ export class AuthService {
 
   loggedOutUser(){
     window.localStorage.clear()
-    this._router.navigate(['/home']);
+    this._router.navigate(['/dashboard']);
   }
   getToken(){
     console.log('Hi GetToken');
