@@ -28,14 +28,14 @@
       font-weight: bolder;
     }
     #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-      color: rgba(230, 173, 88, 0.8) ;
+      color: #fba70b ;
     }
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
       color: rgb(56, 143, 134);
       font-weight: bolder;
     }
     #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
-      color: rgba(230, 173, 88, 0.8) ;
+      color: #fba70b ;
       transition: all .2s ease-in-out;
       transform:scale(1.1);
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public _authService: AuthService) { }
+  constructor(public _authService: AuthService,private viewportScroller: ViewportScroller) { }
 
+  
+  public onClick(elementId: string): void { 
+    this.viewportScroller.scrollToAnchor(elementId);
+  }
   ngOnInit(): void {
   }
 

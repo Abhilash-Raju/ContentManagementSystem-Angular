@@ -1,0 +1,186 @@
+/* 
+---------------------------------------------
+welcome
+--------------------------------------------- 
+*/
+.welcome-area {
+  width: 100%;
+  background-image: url(/assets/images/Best-Fitness-Blogs.jpg);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+.welcome-area .header-text .left-text {
+  position: relative;
+  align-self: center;
+  margin-top: 300px;
+  transform: perspective(1px) translateY(-30%) !important;
+}
+
+.welcome-area .header-text h1 {
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 80px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  color: rgb(56, 143, 134);
+}
+
+.welcome-area .header-text h1 em {
+  font-style: normal;
+  color: #fba70b;
+}
+
+.welcome-area .header-text p {
+  font-weight: 300;
+  font-size: 17px;
+  color: #7a7a7a;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+
+/*-- Services --*/
+
+
+.heading-section {
+    text-align: center;
+    padding: 100px 0 80px 0;
+  }
+  
+.service-item h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin-top: 25px;
+  }
+  
+  .col-sm-10 .service-item{
+      padding: 30px;
+      border: 1px solid #f0f0f0;
+      border-radius: 10px;
+      position: relative;
+      -webkit-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+      -moz-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+      box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+      border-radius: 20px;
+      margin-top: 40px;
+      text-align: center;
+
+  }
+  /*-- End Services --*/
+
+  /* Blog Section Start */
+
+
+  #blog {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    }
+
+    
+.parallax-section {
+    background-attachment: fixed !important;
+    background-size: cover !important;
+  }
+  #blog .blog-thumb {
+    border: 1px solid #f0f0f0;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+    -moz-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+    box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+    border-radius: 20px;
+    padding: 60px;
+    -wekbit-transition: all 1000ms linear;
+    transition: all 1000ms linear;
+  }
+   
+  #blog .blog-thumb:hover .blog-date, #blog .blog-thumb:hover h3 a,
+  #blog .blog-thumb:hover #blog-author {color: #f78e21;}
+  
+  #blog .col-md-6:nth-child(2) .blog-thumb,
+  #blog .col-md-6:nth-child(3) .blog-thumb {
+    margin-top: 72px;
+  }
+  
+  #blog .col-md-6:nth-child(4) .blog-thumb,
+  #blog .col-md-6:nth-child(5) .blog-thumb {
+    margin-top: 42px;
+  }
+  
+  a {
+    text-decoration: none;
+    outline: none;
+  }
+  
+  #blog h3 a {
+    color: #606060;
+  }
+  
+  #blog .blog-date {
+    color: #999;
+    font-weight: bold;
+  }
+  
+  #blog #blog-author {
+    color:  rgb(56, 143, 134);
+    letter-spacing: 1px;
+  }
+  
+  /* Blog Section End */
+
+  /* About Us Section Start */
+
+  
+header.masthead {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 57px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url('/assets/images/pexels-the-th-179912.jpg')
+  }
+  header.masthead:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.masthead .page-heading {
+    color: #fff;
+  }
+  header.masthead .page-heading {
+    text-align: center;
+  }
+  header.masthead .page-heading h1, header.masthead .page-heading .h1 h1 .h1 {
+    font-size: 3rem;
+  }
+  header.masthead .page-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+  }
+  @media (min-width: 992px) {
+    header.masthead {
+      padding-top: 12.5rem;
+      padding-bottom: 12.5rem;
+    }
+    header.masthead .page-heading h1, header.masthead .page-heading .h1 h1 .h1 {
+      font-size: 5rem;
+    }
+  
+  }
+  /* About Us Section End */
