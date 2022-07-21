@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import {forbiddenNameValidator} from '../../shared/data-validator';
 import {PasswordValidator} from '../../shared/password-validator';
 import { AuthService } from 'src/app/services/auth.service';
 

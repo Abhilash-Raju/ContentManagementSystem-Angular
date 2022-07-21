@@ -49,6 +49,13 @@ app.get('/',(req,res)=>{
     res.send('Welcome to Home Page');
 })
 
+// Setting up Category and Post Route
+const categoryRouter=require('./routes/category');
+app.use('/categories',categoryRouter);
+
+const postRouter=require('./routes/post');
+app.use('/posts',postRouter);
+
 //Listen on port 3000
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);

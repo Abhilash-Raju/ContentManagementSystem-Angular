@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-category',
@@ -21,7 +22,10 @@ export class AddCategoryComponent implements OnInit {
   secondFormGroup!:FormGroup;
 
   get category(){
-    return this.firstFormGroup.controls['firstCtrl']
+    return this.firstFormGroup.controls['categoryName']
+  }
+  get about(){
+    return this.firstFormGroup.controls['about']
   }
   get head(){
     return this.secondFormGroup.controls['head']
@@ -52,12 +56,13 @@ export class AddCategoryComponent implements OnInit {
         );
     }
   
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private authservice:AuthService) {}
   
   
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      categoryName: ['', Validators.required],
+      about: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       head: ['', Validators.required],
@@ -65,6 +70,45 @@ export class AddCategoryComponent implements OnInit {
       image: ['', Validators.required],
       body: ['', Validators.required]
     });
+
+
+    this.firstFormGroup.get('subscribe')?.valueChanges
+    .subscribe(checkedValue=>{
+      if (checkedValue){
+        return true
+      }
+      else {
+        return false
+      }
+    })
+
+
+    this.secondFormGroup.get('subscribe')?.valueChanges
+    .subscribe(checkedValue=>{
+      if (checkedValue){
+        return true
+      }
+      else {
+        return false
+      }
+    })
   }
 
+
+  onSubmit(){
+    console.log(this.firstFormGroup.value)
+    console.log(this.secondFormGroup.value)
+    this.authservice.registeringUser(this.firstFormGroup.value)
+    .subscribe(
+      response =>console.log('Success!',response),
+      error =>console.log('Error!',error)
+    )
+    this.authservice.registeringUser(this.secondFormGroup.value)
+    .subscribe(
+      response =>console.log('Success!',response),
+      error =>console.log('Error!',error)
+    )
+
+
+  }
 }
