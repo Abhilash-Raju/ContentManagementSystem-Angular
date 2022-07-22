@@ -67,7 +67,7 @@ export class AddCategoryComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       head: ['', Validators.required],
       subhead: ['', Validators.required],
-      image: ['', Validators.required],
+      image: ['',   Validators.required],
       body: ['', Validators.required]
     });
 

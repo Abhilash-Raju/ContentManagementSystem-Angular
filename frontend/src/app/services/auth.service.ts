@@ -28,24 +28,35 @@ export class AuthService {
 
   loggedOutUser(){
     window.localStorage.clear()
-    this._router.navigate(['/dashboard']);
+    this._router.navigate(['/home']);
   }
   getToken(){
     console.log('Hi GetToken');
     return localStorage.getItem('token');
   }
 
+  getUser(){
+    var token=localStorage.getItem('token')||"";
+    var parse = atob(token.split('.')[1])
+    var _roleAccess= JSON.parse(parse);
+    if(!!_roleAccess){
+      console.log(_roleAccess.subject.name)
+      return _roleAccess.subject.name
+    }
+    else {
+      alert('Invalid') 
+    }
+  }
   userRoleAccess(){
     var token=localStorage.getItem('token')||"";
     var parse = atob(token.split('.')[1])
    var _roleAccess= JSON.parse(parse);
-   if((_roleAccess.subject.role ==="Admin")||(_roleAccess.subject.email=='admin@domain.com'&&_roleAccess.subject.password =="admin1234")){
-     console.log('Hello Admin')
+   if((_roleAccess.subject.role ==="SuperAdmin")||(_roleAccess.subject.email=='super@domain.com'&&_roleAccess.subject.password =="Super@1234")){
+     console.log('Hello SuperAdmin')
      console.log(_roleAccess.subject.role)
      return true
    }
    console.log(_roleAccess.subject.role)
-  //  alert('No access')
    return false
   }
 
