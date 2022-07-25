@@ -102,8 +102,10 @@ if(mimetype&&extname){
           head : req.body.head,
           subhead : req.body.subhead,
           body : req.body.body,
-          postImagePath : req.files.image[0].filename
-     }       
+          postImagePath : req.files.postImagePath[0].filename
+          // date : new Date(),
+          // authorname: this._auth.getUser()
+        }       
      
      var post = new PostData(post);
      post.save();

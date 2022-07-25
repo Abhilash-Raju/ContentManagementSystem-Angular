@@ -11,16 +11,22 @@ const postSchema = new Schema({
         type:String, 
         required: true,
         },
-    date: new Date()
-        ,
-    postImagePath: {
-        type:String, 
-        required: true
+        postImagePath: {
+            type:String, 
+            required: true
         },
-    body:  {
-        type:String, 
-        required: true
+        body:  {
+            type:String, 
+            required: true
         }
+    //     ,
+    //     date: {type: String,
+    //     required: true}
+    //     ,
+    //     authorname: {
+    //     type: String,
+    //     required: true
+    // }
 });
 
 

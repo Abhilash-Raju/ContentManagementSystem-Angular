@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Post } from '../models/blogmodel';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { BlogService } from 'src/app/services/blog.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { PostdataService } from 'src/app/services/postdata.service';
+
 
 
 
@@ -13,127 +14,24 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class CreatePostComponent implements OnInit {
 
-
-  @Input() post?: Post;
-  newPostForm!:FormGroup;
+  secondFormGroup!:FormGroup;
   
-  
-      constructor(
-        private fb: FormBuilder,
-        private blogService: BlogService,
-        private modalService: NgbModal
-        ) {}
+  get head(){
+    return this.secondFormGroup.controls['head']
+  }
+  get subhead(){
+    return this.secondFormGroup.controls['subhead']
+  }
+  get image(){
+    return this.secondFormGroup.controls['image']
+  }
+  get body(){
+    return this.secondFormGroup.controls['body']
+  }
 
-        ngOnInit() {
-          if (this.post) {
-          this.newPostForm = this.fb.group({
-              heading: ['', [Validators.required]],
-              subHeading: ['', [Validators.required]],
-              backgroundImage: ['', [Validators.required]],
-              body: ['', [Validators.required]],
-          });
-            this.newPostForm.setValue({
-                heading: this.post.heading,
-                subHeading: this.post.subHeading,
-                backgroundImage: this.post.backgroundImage.replace(/^url\("(.+)"\)/, '$1'),
-                body: this.post.body,
-            });
-        }
-    }
-
-    onSubmit() {
-        if (this.newPostForm.status === 'VALID') {
-            if (!this.post) {
-                this.blogService
-                    // .createPost$(this.newPostForm.value)
-                    // .subscribe((response: any) => console.log(response));
-            } else {
-                this.blogService
-                    // .updatePost$(this.post, this.newPostForm.value)
-                    // .subscribe((response: any) => console.log(response));
-            }
-        }
-
-        // tslint:disable-next-line: forin
-        for (const key in this.newPostForm.controls) {
-            const control = this.newPostForm.controls[key];
-            control.markAllAsTouched();
-        }
-    }
-
-    deletePost() {
-        this.blogService
-            // .deletePost$((this.post as Post).id)
-            // .subscribe(
-            //   (response: any) => console.log(response));
-    }
-
-    open(content: TemplateRef<unknown>, modalOptions: NgbModalOptions = {}) {
-        this.modalService.open(content, modalOptions).result.then(
-          (            result: string) => {
-                if (result === 'CONFIRM') {
-                    this.deletePost();
-                }
-            },
-          (            reason: any) => {}
-        );
-    }
-
-    /* Accessor Methods */
-
-    // heading
-    get headingControl() {
-        return this.newPostForm.get('heading') as FormControl;
-    }
-
-    get headingControlValid() {
-        return this.headingControl.touched && !this.headingControlInvalid;
-    }
-
-    get headingControlInvalid() {
-        return (
-            this.headingControl.touched &&
-            (this.headingControl.hasError('required') || this.headingControl.hasError('heading'))
-        );
-    }
-
-    // subHeading
-    get subHeadingControl() {
-        return this.newPostForm.get('subHeading') as FormControl;
-    }
-
-    get subHeadingControlValid() {
-        return this.subHeadingControl.touched && !this.subHeadingControlInvalid;
-    }
-
-    get subHeadingControlInvalid() {
-        return (
-            this.subHeadingControl.touched &&
-            (this.subHeadingControl.hasError('required') ||
-                this.subHeadingControl.hasError('subHeading'))
-        );
-    }
-
-    // backgroundImage
-    get backgroundImageControl() {
-        return this.newPostForm.get('backgroundImage') as FormControl;
-    }
-
-    get backgroundImageControlValid() {
-        return this.backgroundImageControl.touched && !this.backgroundImageControlInvalid;
-    }
-
-    get backgroundImageControlInvalid() {
-        return (
-            this.backgroundImageControl.touched &&
-            (this.backgroundImageControl.hasError('required') ||
-                this.backgroundImageControl.hasError('backgroundImage'))
-        );
-    }
-
-    // body
-    get bodyControl() {
-        return this.newPostForm.get('body') as FormControl;
+      // body
+      get bodyControl() {
+        return this.secondFormGroup.get('body') as FormControl;
     }
 
     get bodyControlValid() {
@@ -146,4 +44,36 @@ export class CreatePostComponent implements OnInit {
             (this.bodyControl.hasError('required') || this.bodyControl.hasError('body'))
         );
     }
+  
+
+      constructor( private _formBuilder: FormBuilder, private _auth:AuthService, private _postserve:PostdataService, private router:Router) {}
+
+        ngOnInit():void {
+        
+            this.secondFormGroup = this._formBuilder.group({
+                head: ['', Validators.required],
+                subhead: ['', Validators.required],
+                postImagePath: ['',   Validators.required],
+                body: ['', Validators.required]
+                // ,
+                // date : new Date(),
+                // authorname: this._auth.getUser()
+              });
+    }
+
+    createPost(){
+        this._postserve.newPost(this.secondFormGroup.value)
+        .subscribe(res => {
+            console.log("Success!",res)
+            alert("Post is added Successfully");
+            this.router.navigate(['/posts']);
+        },
+        err => {
+            console.log(this.secondFormGroup.value);
+            console.log(err)
+            alert("Hi User, Please enter valid details in the post")
+          }
+        )
+        }
+
 }

@@ -21,8 +21,8 @@
                 <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="category">Category</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="createpost" >New Post</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="addcategory" >Add Category</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login">Log In</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register">Sign Up</a></li> -->
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.loggedOutUser()">Log Out</a></li>
                 
             </ul>

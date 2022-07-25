@@ -50,10 +50,10 @@ app.get('/',(req,res)=>{
 })
 
 // Setting up Category and Post Route
-const categoryRouter=require('./routes/category');
+const categoryRouter=require('./routes/addcategory');
 app.use('/categories',categoryRouter);
 
-const postRouter=require('./routes/post');
+const postRouter=require('./routes/addpost');
 app.use('/posts',postRouter);
 
 //Listen on port 3000

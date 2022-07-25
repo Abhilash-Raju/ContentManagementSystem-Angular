@@ -12,9 +12,8 @@ export class PostdataService {
     return this.http.get("http://localhost:3000/posts");
   }
 
-  newPost(formData: FormData){
+  newPost(formData: any){
    return this.http.post("http://localhost:3000/posts/insert",formData)
-   .subscribe(data =>{console.log(data)})
   }
 
  getPost(id:any){

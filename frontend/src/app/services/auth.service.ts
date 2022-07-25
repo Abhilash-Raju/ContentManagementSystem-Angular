@@ -40,8 +40,8 @@ export class AuthService {
     var parse = atob(token.split('.')[1])
     var _roleAccess= JSON.parse(parse);
     if(!!_roleAccess){
-      console.log(_roleAccess.subject.name)
-      return _roleAccess.subject.name
+      console.log(_roleAccess.subject.username)
+      return _roleAccess.subject.username
     }
     else {
       alert('Invalid') 
