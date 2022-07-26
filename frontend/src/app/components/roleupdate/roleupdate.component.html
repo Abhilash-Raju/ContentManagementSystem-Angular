@@ -1,0 +1,41 @@
+
+<br><br><br><br><br>
+<div class='card'>
+    <form  #form="ngForm" (ngSubmit)="editRole()">
+<div class='card-header'>
+ Edit Profile
+</div>
+<div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody>  
+          <tr>
+              <td> <label>User Name</label></td>
+              <td><input type="text" name="username" #username="ngModel"  [(ngModel)]="userInstance.username" /></td>                  
+            </tr>   
+           <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" name="email" #email="ngModel"  [(ngModel)]="userInstance.email"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>User Role</label></td>
+                <td><input type="text" name="role" #role="ngModel"  [(ngModel)]="userInstance.role"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>CheckBox</label></td>
+                <td><input type="checkbox" name="subscribe" #subscribe="ngModel"  [(ngModel)]="userInstance.sub"/></td>                  
+              </tr>  
+
+              <tr>
+                <td></td>
+                <td><input type="submit"  value="Submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+</div>
+</form>
+</div>
+
+

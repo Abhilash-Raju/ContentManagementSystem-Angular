@@ -11,7 +11,7 @@ const cors = require('cors');
 var bodyparser=require('body-parser');
 
 
-console.log("in addCategoryRoutes");
+console.log("in addPostRoutes");
 
   postRouter.use(bodyparser.json({
     limit: "200mb",

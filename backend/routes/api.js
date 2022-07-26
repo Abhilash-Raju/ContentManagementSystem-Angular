@@ -14,6 +14,54 @@ router.get('/',(req,res)=>{
     res.send('Hello from API route');
 })
 
+router.get('/users', function (req, res) {
+    User.find()
+            .then(function(users){
+                res.send(users);
+            })
+  })    
+
+  router.get('/users/:id', (req, res) => {
+    const id = req.params.id;
+    User.findOne({"_id":id})
+      .then((user)=>{
+          res.send(user);
+      });
+  })
+
+
+  router.put('/update',),(req,res)=>{
+    res.header("Access-Control-Allow-Origin","*")
+    res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+    console.log(req.body)
+    id=req.body._id,
+    username = req.body.username,
+    email = req.body.email,
+    role = req.body.role,
+    sub = req.body.subscribe
+
+    User.findByIdAndUpdate({"_id":id},
+                                {$set:{
+                                "username":username,
+                                "email":email,
+                                "role":role,
+                                "sub" :subscribe
+                                }})
+   .then(function(){
+       res.send();
+   })
+  }
+
+  router.delete('/remove/:id',(req,res)=>{
+    id = req.params.id;
+    console.log(id);
+    User.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+  })
+
 // Signup Router
 router.post('/signup', (req,res)=>{
    
@@ -119,3 +167,19 @@ router.post('/login',(req,res)=>{
 )
 
 module.exports = router
+
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token==='null'){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if(!payload){
+        return res.status(401).send('Unauthorised Request');
+    }
+    req.userId = payload.subject;
+    next()
+      }

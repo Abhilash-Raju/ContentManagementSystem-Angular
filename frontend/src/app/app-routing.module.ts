@@ -13,6 +13,9 @@ import { LoginComponent } from './components/login/login.component';
 import { PostComponent } from './components/post/post.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RoleupdateComponent } from './components/roleupdate/roleupdate.component';
+import { RootComponent } from './components/root/root.component';
+import { RootdashComponent } from './components/rootdash/rootdash.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'register',component:RegisterComponent},
@@ -28,6 +31,12 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'editcategory',component:EditcategoryComponent},
 {path:'editpost',component:EditpostComponent},
+{path:'editpost',component:EditpostComponent},
+{path:'roleupdate',component:RoleupdateComponent},
+{path:'root',component:RootdashComponent,
+children:
+[{path:'rootprofile',component:RootComponent}]
+},
 ];
 
 @NgModule({

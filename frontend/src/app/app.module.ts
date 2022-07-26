@@ -22,6 +22,9 @@ import { CategoryComponent } from './components/category/category.component';
 import { PostComponent } from './components/post/post.component';
 import { EditpostComponent } from './components/editpost/editpost.component';
 import { EditcategoryComponent } from './components/editcategory/editcategory.component';
+import { RootComponent } from './components/root/root.component';
+import { RootdashComponent } from './components/rootdash/rootdash.component';
+import { RoleupdateComponent } from './components/roleupdate/roleupdate.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { EditcategoryComponent } from './components/editcategory/editcategory.co
     CategoryComponent,
     PostComponent,
     EditpostComponent,
-    EditcategoryComponent
+    EditcategoryComponent,
+    RootComponent,
+    RootdashComponent,
+    RoleupdateComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { EditcategoryComponent } from './components/editcategory/editcategory.co
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule  ],
+    HttpClientModule,
+    FormsModule  ],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

@@ -35,7 +35,28 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getUser(){
+  getUsers(){
+    return this.http.get("http://localhost:3000/api/users");
+  }
+
+  deleteUser(id:any)
+  {
+    console.log("id to delete", id);
+    return this.http.delete("http://localhost:3000/api/remove/"+id)
+  }
+
+  editRole(user:any)
+  {
+    console.log('User Role update')
+    return this.http.put("http://localhost:3000/api/update",user)
+    .subscribe(data =>{console.log(data)})
+  }
+
+  getUser(id:any){
+    return this.http.get("http://localhost:3000/api/users/"+id);
+  }
+
+  User(){
     var token=localStorage.getItem('token')||"";
     var parse = atob(token.split('.')[1])
     var _roleAccess= JSON.parse(parse);

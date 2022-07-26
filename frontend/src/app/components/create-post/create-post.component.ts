@@ -57,7 +57,7 @@ export class CreatePostComponent implements OnInit {
                 body: ['', Validators.required]
                 // ,
                 // date : new Date(),
-                // authorname: this._auth.getUser()
+                // authorname: this._auth.User()
               });
     }
 

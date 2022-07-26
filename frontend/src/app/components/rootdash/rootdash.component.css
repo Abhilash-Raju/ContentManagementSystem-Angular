@@ -1,0 +1,78 @@
+.sidebar {
+    width: max(250px, 20vw);
+    background: #a74086;
+    height: 100vh;
+    margin-top: 85px;
+  }
+  
+  .sidebar .side-header {
+    margin: 0 auto;
+    padding: 1em 4em 1em 0em;
+    width: max-content;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 90%;
+  }
+  .side-header h1,
+  .side-header p {
+    margin: 0;
+    color: white;
+  }
+  
+  .side-header p {
+    text-align: right;
+  }
+  
+  .sidenav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    position: relative;
+    margin-top: 0.3em;
+  }
+  .sidenav .button-container {
+    width: 100%;
+    display: contents;
+  }
+  
+  .button:nth-child(10) {
+    margin-top: auto;
+  }
+  
+  .sidenav .checkbox {
+    position: absolute;
+    z-index: -1;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .sidenav a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+  }
+  .sidenav a:hover {
+    transition: all 0.5s;
+    background: linear-gradient(45deg, lightgrey, transparent);
+    box-sizing: border-box;
+    transition-timing-function: cubic-bezier(0, 1.04, 0, 1.14);
+  }
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
