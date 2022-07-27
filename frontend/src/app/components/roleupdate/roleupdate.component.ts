@@ -12,8 +12,9 @@ export class RoleupdateComponent implements OnInit {
   userInstance= {
     username:'',
     email:'',
-    role:'',
-    sub: ''}
+    role:''
+    ,sub: ''
+  }
   constructor(private _auth:AuthService, private router:Router) { }
 
   ngOnInit(): void {
@@ -24,10 +25,11 @@ export class RoleupdateComponent implements OnInit {
       console.log(this.userInstance)
       })
     }
-  editRole()
+  editRoles()
   {    
     this._auth.editRole(this.userInstance);
     alert(this.userInstance.username+ " role is updated successfully");
+    console.log(this.userInstance)
     this.router.navigate(['/root/rootprofile']);
   }
 

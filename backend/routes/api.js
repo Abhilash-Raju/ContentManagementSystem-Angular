@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 let alert = require('alert'); 
 
+
 // Router setup
 router.get('/',(req,res)=>{
     res.send('Hello from API route');
@@ -30,27 +31,27 @@ router.get('/users', function (req, res) {
   })
 
 
-  router.put('/update',),(req,res)=>{
+  router.put('/update', (req,res)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
     console.log(req.body)
     id=req.body._id,
     username = req.body.username,
     email = req.body.email,
-    role = req.body.role,
-    sub = req.body.subscribe
+    role = req.body.role
+    ,sub = req.body.sub? true : false
 
     User.findByIdAndUpdate({"_id":id},
                                 {$set:{
                                 "username":username,
                                 "email":email,
-                                "role":role,
-                                "sub" :subscribe
+                                "role":role
+                                ,"sub" :sub
                                 }})
    .then(function(){
        res.send();
    })
-  }
+  })
 
   router.delete('/remove/:id',(req,res)=>{
     id = req.params.id;

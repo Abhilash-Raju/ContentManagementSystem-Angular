@@ -47,7 +47,7 @@ export class AuthService {
 
   editRole(user:any)
   {
-    console.log('User Role update')
+    console.log('User Role updated')
     return this.http.put("http://localhost:3000/api/update",user)
     .subscribe(data =>{console.log(data)})
   }
