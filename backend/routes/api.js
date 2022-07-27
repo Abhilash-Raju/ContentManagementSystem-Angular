@@ -38,15 +38,15 @@ router.get('/users', function (req, res) {
     id=req.body._id,
     username = req.body.username,
     email = req.body.email,
-    role = req.body.role
-    ,sub = req.body.sub? true : false
+    role = req.body.sub? 'Admin' : 'AuthUser',
+    sub = req.body.sub? true : false
 
     User.findByIdAndUpdate({"_id":id},
                                 {$set:{
                                 "username":username,
                                 "email":email,
-                                "role":role
-                                ,"sub" :sub
+                                "role":role,
+                                "sub" :sub
                                 }})
    .then(function(){
        res.send();
