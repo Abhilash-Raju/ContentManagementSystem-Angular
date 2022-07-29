@@ -13,7 +13,9 @@ var bodyparser=require('body-parser');
 
 console.log("in addPostRoutes");
 
-  postRouter.use(bodyparser.json({
+  postRouter.use(cors());
+  
+  postRouter.use(bodyparser.urlencoded({
     limit: "200mb",
     type:'application/json'
   }));
@@ -24,7 +26,6 @@ console.log("in addPostRoutes");
     parameterLimit: 1000000
   }));
 
-  postRouter.use(cors());
 
 
 
@@ -72,7 +73,7 @@ if(mimetype&&extname){
 }
 
 // Single Post //
-    postRouter.get('/:id',verifyToken,  (req, res) => {
+    postRouter.get('/:id',  (req, res) => {
     const id = req.params.id;
     PostData.findOne({"_id":id})
       .then((post)=>{
@@ -81,7 +82,7 @@ if(mimetype&&extname){
     })
 
 // All Posts //
-    postRouter.get('/',verifyToken, function (req, res) {
+    postRouter.get('/', function (req, res) {
       PostData.find()
               .then(function(posts){
                   res.send(posts);
@@ -89,31 +90,26 @@ if(mimetype&&extname){
     })    
 
 // Create Post //
-    postRouter.post('/insert',verifyToken,upload.fields([
-      {name: "file", maxCount: 1},
-      {name: "image", maxCount: 1},
-    ]),function(req,res){
+    postRouter.post('/insert',(req,res)=>{
       res.header("Access-Control-Allow-Origin","*")
       res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
-      
-      console.log("images:::"+req.files.image[0].filename);
-
       var post = {       
           head : req.body.head,
           subhead : req.body.subhead,
-          body : req.body.body,
-          postImagePath : req.files.postImagePath[0].filename
-          // date : new Date(),
-          // authorname: this._auth.getUser()
+          body : req.body.body
         }       
-     
+        // postImagePath : req.files.postImage[0].filename,
+        // date : new Date(),
+        // authorname: this._auth.getUser()
+    //  alert("Post added")
      var post = new PostData(post);
+     console.log(post)
      post.save();
   });
   
 // Delete a Post //
 
-  postRouter.delete('/remove/:id',verifyToken,(req,res)=>{
+  postRouter.delete('/remove/:id',(req,res)=>{
      
     id = req.params.id;
     console.log(id);
@@ -127,7 +123,7 @@ if(mimetype&&extname){
   
 // Updating a Post //
 
-  postRouter.put('/update',verifyToken, upload.fields([
+  postRouter.put('/update', upload.fields([
     {name: "file", maxCount: 1},
     {name: "image", maxCount: 1},
   ]),(req,res)=>{

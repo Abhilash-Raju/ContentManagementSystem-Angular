@@ -37,8 +37,8 @@ button :hover{
 
   textarea { resize:none; }
 
-  .input-box input,
-  .input-box textarea
+  .input-box input
+  /* ,  .input-box textarea */
   {
     position: absolute;
     height: 100%;
@@ -52,9 +52,9 @@ button :hover{
     transition: all 0.3s ease;
   }
   .input-box input:focus,
-  .input-box input:valid,
-  .input-box textarea:focus,
-  .input-box textarea:valid
+  .input-box input:valid
+  /* ,  .input-box textarea:focus,
+  .input-box textarea:valid */
   {
     border-color:  #24c2b8;
     background-color: #fff;
@@ -71,6 +71,7 @@ button :hover{
     transform: translateY(-50%);
     transition: all 0.3s ease;
   }
+
   .input-box input:focus ~ label,
   .input-box textarea:focus ~ label,
   .input-box input:valid ~ label,
@@ -82,6 +83,7 @@ button :hover{
     color:  #24c2b8;
     background: rgba(255, 255, 255, 1);
   }
+  
   .input-box input:invalid ~ div .text-danger,
   .input-box textarea:invalid ~ div .text-danger
   {

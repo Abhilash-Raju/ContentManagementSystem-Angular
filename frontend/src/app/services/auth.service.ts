@@ -68,6 +68,7 @@ export class AuthService {
       alert('Invalid') 
     }
   }
+  
   userRoleAccess(){
     var token=localStorage.getItem('token')||"";
     var parse = atob(token.split('.')[1])

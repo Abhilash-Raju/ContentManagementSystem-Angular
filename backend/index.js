@@ -53,7 +53,7 @@ app.get('/',(req,res)=>{
 const categoryRouter=require('./routes/addcategory');
 app.use('/categories',categoryRouter);
 
-const postRouter=require('./routes/addpost');
+const postRouter = require('./routes/addpost')
 app.use('/posts',postRouter);
 
 //Listen on port 3000

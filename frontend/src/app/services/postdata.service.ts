@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Post } from '../components/models/blogmodel';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class PostdataService {
     return this.http.get("http://localhost:3000/posts");
   }
 
-  newPost(formData: any){
-   return this.http.post("http://localhost:3000/posts/insert",formData)
+  newPost(post: Post){
+   return this.http.post<any>("http://localhost:3000/posts/insert",post)
+
   }
 
  getPost(id:any){

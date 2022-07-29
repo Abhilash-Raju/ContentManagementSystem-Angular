@@ -9,16 +9,15 @@ const postSchema = new Schema({
         required: true },
     subhead: {
         type:String, 
-        required: true,
-        },
-        postImagePath: {
-            type:String, 
-            required: true
-        },
-        body:  {
+        required: true
+        }, 
+    body: {
             type:String, 
             required: true
         }
+        //, postImagePath: {
+        //     type:String
+        // },
     //     ,
     //     date: {type: String,
     //     required: true}
@@ -29,5 +28,7 @@ const postSchema = new Schema({
     // }
 });
 
+const PostData = mongoose.model('post',postSchema);
 
-module.exports = mongoose.model('post',postSchema,'post')
+
+module.exports = PostData
