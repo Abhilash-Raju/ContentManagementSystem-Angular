@@ -90,18 +90,21 @@ if(mimetype&&extname){
     })    
 
 // Create Post //
-    postRouter.post('/insert',(req,res)=>{
+    postRouter.post('/insert', upload.fields([
+      {name: "image", maxCount: 1},
+    ]),(req,res)=>{
       res.header("Access-Control-Allow-Origin","*")
       res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+
       var post = {       
           head : req.body.head,
           subhead : req.body.subhead,
-          body : req.body.body
+          body : req.body.body,
+          date : new Date()
         }       
-        // postImagePath : req.files.postImage[0].filename,
-        // date : new Date(),
-        // authorname: this._auth.getUser()
-    //  alert("Post added")
+        // postImagePath : req.files.image[0].filename,
+        // authorname: this._auth.getUser(), 
+        //  alert("Post added")
      var post = new PostData(post);
      console.log(post)
      post.save();

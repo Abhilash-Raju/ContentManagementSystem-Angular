@@ -15,18 +15,15 @@ export class CreatePostComponent implements OnInit {
 
       constructor( private _auth:AuthService, private _postserve:PostdataService, private router:Router) {}
 
-    //   image: any;
+      image: any;
 
-      postModel= new Post(0,"","","");
+      postModel= new Post(0,"","","","","");
 
         ngOnInit():void {
-        
         }
         
         createPost()
         {
-        // formData.append('postImage', this.image)
-        // formData.append('authorname', this._auth.User())
         this._postserve.newPost(this.postModel)
         .subscribe(
             data => console.log('Success!', data),
@@ -35,9 +32,9 @@ export class CreatePostComponent implements OnInit {
         // this.router.navigate(['/posts']);
         }
 
-        // onImageSelect(event: any){
-        //     const image=event.target.files[0];
-        //     this.image = image;
-        //   }
+        onImageSelect(event: any){
+            const image=event.target.files[0];
+            this.image = image;
+          }
 
 }

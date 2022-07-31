@@ -3,9 +3,9 @@ export class Post {
     public _id: any,
     public head: string,
     public subhead: string,
-    public body: string
-    // public postImage: any,
-    // public postImagePath: string,
+    public body: string,
+    public image: any,
+    public imagePath: string
     // , public authorname:string
     ){}
 }

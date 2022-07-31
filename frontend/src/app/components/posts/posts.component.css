@@ -86,6 +86,7 @@ header.masthead {
   .post-preview{
     padding: 10px 0px 40px 80px;
     border-radius: 20px;
+    border: 2px solid rgb(228, 224, 224);
   }
   
   .post-preview:hover{

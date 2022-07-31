@@ -8,7 +8,7 @@
                   <label>Post Heading</label>
                   <div class="check container mt-4 pt-1" *ngIf="head?.invalid && (head.dirty || head?.touched)">
                       <label *ngIf="head.errors?.['required']" class="text-danger">Heading is Required</label>
-                      <label *ngIf="head.errors?.['pattern']" class="text-danger">Heading must have at least 6 characters</label>
+                      <label *ngIf="head.errors?.['pattern']" class="text-danger">Heading must have at least 6 characters and only alphabets</label>
                   </div>
                 </div>
                 <div class="pt-1"></div>
@@ -34,11 +34,7 @@
                 <div class="pt-1"></div>
             
                 <div class="input-box form-group">
-                    <!-- <input (change)="onImageSelect($event)"  name="postImage"  class="form-control" placeholder="Choose an Image" type="file"accept="image/png, image/jpeg, image/jpg" required> -->
-                    <!-- <input name="postImage"  class="form-control" placeholder="Choose an Image" type="file"accept="image/png, image/jpeg, image/jpg" required> -->
-                    <!-- <div class="check container mt-4 pt-1" *ngIf="image?.invalid && image?.touched">
-                        <label *ngIf="image.errors?.['required']" class="text-danger">Image is Required</label>
-                    </div> -->
+                    <input (change)="onImageSelect($event)"  name="image"  class="form-control" placeholder="Choose a Post Image" type="file" accept="image/png, image/jpeg, image/jpg" required>
                 </div>
                 <div class="pt-1"></div>
                 
