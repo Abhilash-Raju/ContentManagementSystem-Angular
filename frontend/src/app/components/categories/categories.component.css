@@ -86,11 +86,15 @@ header.masthead .site-heading .h1 {
 .post-preview{
   padding: 10px 0px 40px 80px;
   border-radius: 20px;
+  border: 2px solid rgb(228, 224, 224);
 }
 
 .post-preview:hover{
   color: #fba70b ;
   transition: all .2s ease-in-out;
+  -webkit-box-shadow: 10px 10px 115px -40px rgb(175, 174, 173);
+  -moz-box-shadow: 10px 10px 115px -40px rgb(175, 174, 173);
+  box-shadow: 10px 10px 115px -40px rgb(175, 174, 173);  
   transform:scale(1.01);
 }
 .post-preview > a {

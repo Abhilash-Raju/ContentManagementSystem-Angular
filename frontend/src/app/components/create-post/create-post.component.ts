@@ -17,7 +17,7 @@ export class CreatePostComponent implements OnInit {
 
       image: any;
 
-      postModel= new Post(0,"","","","","");
+      postModel= new Post(0,"","","","","","","","");
 
         ngOnInit():void {
         }

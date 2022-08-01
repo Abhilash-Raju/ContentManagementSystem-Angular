@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 // const passportJWT = require('passport-jwt');
 const User = require('../models/user');
 let alert = require('alert'); 
+var LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage('./scratch');
 
 
 // Router setup
@@ -86,35 +88,37 @@ router.post('/signup', (req,res)=>{
             else{
             let payload={subject:resgisteredUser};
                 let token =jwt.sign(payload,'secretKey')
+                localStorage.setItem('user', userData.username )
                 res.status(200).send({token});
             }})
         }
-         else{
+        else{
             userData.role = 'AuthUser';
-          // let user = new User(userData);
-          userData.save((error,resgisteredUser)=>{
-              if(error){
-                  console.log(error);
-              }
-              else{
-                  let payload={subject:resgisteredUser};
-                  let token =jwt.sign(payload,'secretKey')
-                  res.status(200).send({token});
-              }
-          })
-      }
+            // let user = new User(userData);
+            userData.save((error,resgisteredUser)=>{
+                if(error){
+                    console.log(error);
+                }
+                else{
+                    let payload={subject:resgisteredUser};
+                    let token =jwt.sign(payload,'secretKey')
+                    localStorage.setItem('user', userData.username)
+                    res.status(200).send({token});
+                }
+            })
+        }
     }
-)
-
-// Login Router
-router.post('/login',(req,res)=>{
+    )
+    
+    // Login Router
+    router.post('/login',(req,res)=>{
     let userData = new User({
         email: req.body.email,
         password: req.body.password
-      });
-
-      if(userData.email=="super@domain.com" && userData.password=="Super@1234")
-      {
+    });
+    
+    if(userData.email=="super@domain.com" && userData.password=="Super@1234")
+    {
         User.findOne({email : userData.email},(error,user)=>
         {
             if(error)
@@ -131,19 +135,21 @@ router.post('/login',(req,res)=>{
             let payload={subject:userData};
             let token =jwt.sign(payload,'secretKey')
             userData.save()
+            localStorage.setItem('user', "SuperAdmin" )
             res.status(200).send({token});
             }
-            else{
+        else{
             let payload={subject:user};
             let token =jwt.sign(payload,'secretKey')
+            localStorage.setItem('user', user.username )
             res.status(200).send({token});
-            }
-        })
         }
-        else{
-    User.findOne({email : userData.email},(error,user)=>
-    {
-        if(error)
+        })
+    }
+    else{
+        User.findOne({email : userData.email},(error,user)=>
+        {
+            if(error)
         {
             console.log(error);
         }
@@ -160,6 +166,7 @@ router.post('/login',(req,res)=>{
             else{
                 let payload={subject:user};
                 let token =jwt.sign(payload,'secretKey')
+                localStorage.setItem('user', user.username )
                 res.status(200).send({token});
             }
         }

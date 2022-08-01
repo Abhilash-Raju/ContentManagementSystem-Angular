@@ -56,18 +56,18 @@ export class AuthService {
     return this.http.get("http://localhost:3000/api/users/"+id);
   }
 
-  User(){
-    var token=localStorage.getItem('token')||"";
-    var parse = atob(token.split('.')[1])
-    var _roleAccess= JSON.parse(parse);
-    if(!!_roleAccess){
-      console.log(_roleAccess.subject.username)
-      return _roleAccess.subject.username
-    }
-    else {
-      alert('Invalid') 
-    }
-  }
+  // User(){
+  //   var token=localStorage.getItem('token')||"";
+  //   var parse = atob(token.split('.')[1])
+  //   var _roleAccess= JSON.parse(parse);
+  //   if(!!_roleAccess){
+  //     console.log(_roleAccess.subject.username)
+  //     return _roleAccess.subject.username
+  //   }
+  //   else {
+  //     alert('Invalid') 
+  //   }
+  // }
   
   userRoleAccess(){
     var token=localStorage.getItem('token')||"";

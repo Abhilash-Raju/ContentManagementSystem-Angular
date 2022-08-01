@@ -9,6 +9,8 @@ const path = require('path');
 var fs = require('fs');
 const cors = require('cors');
 var bodyparser=require('body-parser');
+var LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage('./scratch');
 
 
 console.log("in addPostRoutes");
@@ -100,11 +102,12 @@ if(mimetype&&extname){
           head : req.body.head,
           subhead : req.body.subhead,
           body : req.body.body,
-          date : new Date()
+          authorname: localStorage.getItem('user'), 
+          date : new Date()        
         }       
+
+        console.log(`This is the user ${localStorage.getItem('user')}`);
         // postImagePath : req.files.image[0].filename,
-        // authorname: this._auth.getUser(), 
-        //  alert("Post added")
      var post = new PostData(post);
      console.log(post)
      post.save();

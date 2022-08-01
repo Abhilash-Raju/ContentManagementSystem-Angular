@@ -1,10 +1,9 @@
-<mat-horizontal-stepper class="container shadow rounded p-5">
-    <mat-step label="Category" [stepControl]="firstFormGroup" errorMessage="Category is required.">
-        <form class="form-floating" [formGroup]="firstFormGroup">
+<mat-vertical-stepper class="container shadow rounded p-5">
+    <mat-step label="Category" [stepControl]="categoryForm.control" errorMessage="Category is required.">
+        <form class="form-floating" #categoryForm="ngForm">
             <ng-template matStepLabel>Enter Category</ng-template>
-
             <div class="input-box form-group">
-                <input [class.is-invalid]="category?.invalid && category?.touched" class="form-control" formControlName ="categoryName" type="text"  pattern="^[A-Za-z\s]{5,}$"  required>
+                <input [class.is-invalid]="category?.invalid && category?.touched" class="form-control" name ="category" #category="ngModel" [(ngModel)]="categoryModel.category" type="text"  pattern="^[A-Za-z\s]{5,}$"  required>
                 <label>Enter Category</label>
                 <div class="check container mt-4 pt-1" *ngIf="category?.invalid && category?.touched">
                 <label *ngIf="category.errors?.['required']" class="text-danger">Category is Required</label>
@@ -14,7 +13,7 @@
             <div class="pt-1"></div>
             
             <div class="input-box form-group">
-                <textarea [class.is-invalid]="about?.invalid && about?.touched" class="form-control py-3"formControlName ="about" type="text"  pattern="^[A-Za-z\s]{8,}$"  required></textarea>
+                <input [class.is-invalid]="about?.invalid && about?.touched" class="form-control py-3" name ="about" #about="ngModel" [(ngModel)]="categoryModel.about" type="text"  pattern="^[A-Za-z\s]{8,}$"  required/>
                 <label>Few Words About the Category</label>
                 <div class="check container mt-4 pt-1" *ngIf="about?.invalid && about?.touched">
                 <label *ngIf="about.errors?.['required']" class="text-danger">Details About Category is Required</label>
@@ -22,67 +21,92 @@
                 </div> 
             </div>
 
+            {{categoryModel | json}}
+            <hr>
+                     {{categoryForm.value | json}}
             <div class="mt-5">
             <button mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
 
-    <mat-step label="Create Post" [stepControl]="secondFormGroup" errorMessage="First Post is required">
-            <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Create Post</ng-template>
+    <mat-step label="Create Post" [stepControl]="postform.control" errorMessage="First Post is required">
+        <form #postform="ngForm">
+            <ng-template matStepLabel>Enter Post</ng-template>
 
-                <div class="topic">Post Content</div>
+            <div class="input-box form-group">
+              <input  class="form-control" [class.is-invalid]="head?.invalid && head?.touched"  name="head" #head="ngModel" [(ngModel)]="postModel.head" type="text" pattern='^[A-Za-z\s]{6,}$'  required>
 
-                <div class="input-box form-group">
-                  <input [class.is-invalid]="head?.invalid && head?.touched"  class="form-control" formControlName ="head" type="text" pattern='^[A-Za-z\s]{6,}$' required>
-                  <label>Post Heading</label>
-                  <div class="check container mt-4 pt-1" *ngIf="head?.invalid && (head.dirty || head?.touched)">
-                      <label *ngIf="head.errors?.['required']" class="text-danger">Heading is Required</label>
-                      <label *ngIf="head.errors?.['pattern']" class="text-danger">Heading must have at least 6 characters</label>
-                  </div>
+              <label>Post Heading</label>
+              <div class="check container mt-4 pt-1" *ngIf="head?.invalid && (head.dirty || head?.touched)">
+                  <label *ngIf="head.errors?.['required']" class="text-danger">Heading is Required</label>
+                  <label *ngIf="head.errors?.['pattern']" class="text-danger">Heading must have at least 6 characters and only alphabets</label>
+              </div>
+            </div>
+            <div class="pt-1"></div>
+      
+            <div class="input-box form-group">
+              <input name="subhead" #subhead="ngModel" [class.is-invalid]="subhead?.invalid && subhead?.touched" class="form-control" [(ngModel)]="postModel.subhead" type="text"  required>
+              <label>Post Subheading</label>
+              <div class="check container mt-4 pt-1" *ngIf="subhead?.invalid && (subhead.dirty || subhead?.touched)">
+                  <label *ngIf="subhead.errors?.['required']" class="text-danger">Subhead is Required</label>
+                  <label *ngIf="subhead.errors?.['pattern']" class="text-danger">Invalid Subhead</label>
+              </div>
+             </div>
+            <div class="pt-1"></div>
+           
+            <div class="form-group">
+                <label class="my-3 fs-5">Post Category</label>
+                <div class="form-check">
+                    <input name="category" #category="ngModel" value="Health" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                    <label for="category" class="form-check-label">Health</label>
                 </div>
-                <div class="pt-1"></div>
-          
-                <div class="input-box form-group">
-                  <input [class.is-invalid]="subhead?.invalid && subhead?.touched" class="form-control" formControlName ="subhead" type="text" pattern="^[\w\s(?=.*[@$!%*?&])]{10,}$" required>
-                  <label>Post Subheading</label>
-                  <div class="check container mt-4 pt-1" *ngIf="subhead?.invalid && (subhead.dirty || subhead?.touched)">
-                    <label *ngIf="subhead.errors?.['required']" class="text-danger">Subhead is Required</label>
-                    <label *ngIf="subhead.errors?.['pattern']" class="text-danger">Invalid Subhead</label>
+                <div class="form-check">
+                    <input name="category" #category="ngModel" value="Diet" [class.is-invalid]="category?.invalid&& category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                    <label for="category" class="form-check-label">Diet</label>
                 </div>
+                <div class="form-check">
+                    <input name="category" #category="ngModel" value="Fitness" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                    <label for="category" class="form-check-label">Fitness</label>
+                </div>
+              <div class="check container mt-4 pt-1" *ngIf="category?.invalid && category?.touched">
+                  <label *ngIf="category.errors?.['required']" class="text-danger">Category is Required</label>
+              </div>
+             </div>
+            <div class="pt-1"></div>
+            
+            <div class="input-box form-group">
+              <input name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" [(ngModel)]="postModel.body" type="text"  required>
+              <label>Post Body</label>
+              <div class="check container mt-4 pt-1" *ngIf="body?.invalid && (body.dirty || body?.touched)">
+                  <label *ngIf="body.errors?.['required']" class="text-danger">Body is Required</label>
+                  <label *ngIf="body.errors?.['pattern']" class="text-danger">Invalid Body</label>
+              </div>
+             </div>
+            <div class="pt-1"></div>
+        
+            <div class="input-box form-group">
+                <input (change)="onImageSelect($event)"  name="image"  class="form-control" placeholder="Choose a Post Image" type="file" accept="image/png, image/jpeg, image/jpg" required>
             </div>
             <div class="pt-1"></div>
             
-            
-            <div class="input-box form-group">
-                <input [class.is-invalid]="image?.invalid && image?.touched" class="form-control" placeholder="Choose an Image" formControlName ="image" type="file" required>
-                <div class="check container mt-4 pt-1" *ngIf="image?.invalid && image?.touched">
-                    <label *ngIf="image.errors?.['required']" class="text-danger">Image is Required</label>
-                </div>
-            </div>
-                <div class="pt-1"></div>
-                
-            <div class=" input-box form-group">
-                    <textarea class="form-control py-3" id="bodyInput" autosize data-cy="bodyInput" placeholder="Post body text" formControlName="body" [class.is-valid]="bodyControlValid" [class.is-invalid]="bodyControlInvalid"></textarea>
-                    <div class="check container mt-4 pt-1" *ngIf="body?.invalid && (body.dirty || body?.touched)">
-                        <div class="invalid-feedback" *ngIf='bodyControl.hasError("required")'>Body content required</div>
-                        <div class="invalid-feedback" *ngIf='bodyControl.hasError("body")'>Body content is not valid</div>
-                    </div>
-            </div>
-                <div class="pt-1"></div>
-                    <div class="mt-3">
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button matStepperNext>Next</button>
-                    </div>
-            </form>
-    </mat-step>
+        {{postModel | json}}
+<hr>
+         {{postform.value | json}}
+    </form>
+    <div class="mt-3">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+    </div>
+
+</mat-step>
 
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>On hitting Submit a New Category will be created.</p>
         <div>
-          <button mat-button >Submit</button>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (onsubmit)="createCategory()">Submit</button>
         </div>
       </mat-step>
-  </mat-horizontal-stepper>
+  </mat-vertical-stepper>

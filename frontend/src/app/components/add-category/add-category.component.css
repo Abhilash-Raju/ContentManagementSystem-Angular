@@ -1,9 +1,15 @@
-mat-horizontal-stepper {
-    position: absolute;
+mat-vertical-stepper {
+    position: relative;
     margin: auto;
     top: 50%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%,-50%);
+}
+
+form {
+  padding: 50px;
+  border-radius: 20px;
+  border: 2px solid rgb(228, 224, 224);
 }
 
 p{

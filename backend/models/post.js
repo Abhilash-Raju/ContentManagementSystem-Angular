@@ -22,12 +22,14 @@ const postSchema = new Schema({
     date: {
         type: String,
         required:true
-        }
-//     ,
-//     authorname: {
-//     type: String,
-//     required: true
-// }
+        },
+    authorname: {
+        type: String,
+        required:true
+        },
+    category :{
+        type:String
+    }
 });
 
 const PostData = mongoose.model('post',postSchema);

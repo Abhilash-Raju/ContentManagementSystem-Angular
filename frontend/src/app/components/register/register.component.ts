@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       response =>{
         console.log('Success!',response);
-        alert("Please proceed to Login.");
+        alert("Sign up Successful. Please proceed to Login.");
         this._router.navigate(['/login']);
       },
       error =>{

@@ -34,7 +34,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log("Success!",res)
-          localStorage.setItem('token', res.token)
+          localStorage.setItem('token', res.token);
+          // let token=localStorage.getItem('token')||"";
+          // let parse = atob(token.split('.')[1])
+          // let _roleAccess= JSON.parse(parse);
+          // localStorage.setItem('user',_roleAccess.subject.username)
           alert("Welcome to Fit'N'Healthy")
           this._router.navigate(['/dashboard'])
         },

@@ -1,6 +1,9 @@
-
-            <form #postform="ngForm" novalidate (ngSubmit)="postform.valid&&createPost()">
-                <div class="topic">Post Content</div>
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-12 col-lg-10 col-xl-8">
+        <form #postform="ngForm" novalidate (ngSubmit)="postform.valid&&createPost()">
+                <div class="topic fs-4"> <b> Post Content</b></div>
 
                 <div class="input-box form-group">
                   <input  class="form-control" [class.is-invalid]="head?.invalid && head?.touched"  name="head" #head="ngModel" [(ngModel)]="postModel.head" type="text" pattern='^[A-Za-z\s]{6,}$'  required>
@@ -22,6 +25,26 @@
                   </div>
                  </div>
                 <div class="pt-1"></div>
+               
+                <div class="form-group">
+                    <label class="my-3"><b> Post Category</b></label>
+                    <div class="form-check">
+                        <input name="category" #category="ngModel" value="Health" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                        <label for="category" class="form-check-label">Health</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="category" #category="ngModel" value="Diet" [class.is-invalid]="category?.invalid&& category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                        <label for="category" class="form-check-label">Diet</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="category" #category="ngModel" value="Fitness" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
+                        <label for="category" class="form-check-label">Fitness</label>
+                    </div>
+                  <div class="check container mt-4 pt-1" *ngIf="category?.invalid && category?.touched">
+                      <label *ngIf="category.errors?.['required']" class="text-danger">Category is Required</label>
+                  </div>
+                 </div>
+                <div class="pt-1"></div>
                 
                 <div class="input-box form-group">
                   <input name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" [(ngModel)]="postModel.body" type="text"  required>
@@ -39,9 +62,13 @@
                 <div class="pt-1"></div>
                 
             {{postModel | json}}
-<hr>
+            <hr>
              {{postform.value | json}}
             <div class="input-box">
-                <input type="submit" value="Submit">
-        </div>
+                <input type="submit" class="button" value="Submit">
+            </div>
         </form>
+            </div>
+        </div>
+    </div>
+</main>

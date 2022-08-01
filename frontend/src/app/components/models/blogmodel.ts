@@ -5,7 +5,9 @@ export class Post {
     public subhead: string,
     public body: string,
     public image: any,
-    public imagePath: string
-    // , public authorname:string
+    public date:any,
+    public category:string,
+    public imagePath: string,
+    public authorname:string
     ){}
 }

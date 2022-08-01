@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Category } from '../components/models/categorymodel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,8 @@ export class CategorydataService {
      return this.http.get("http://localhost:3000/categories");
   }
 
-  newCategory(formData: FormData){
+  newCategory(formData: Category){
     return this.http.post("http://localhost:3000/categories/insert",formData)
-    .subscribe(data =>{console.log(data)})
   }
   // delete a Category
   deleteCategory(id:any)
