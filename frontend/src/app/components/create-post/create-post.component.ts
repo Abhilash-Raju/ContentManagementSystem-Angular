@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 import { PostdataService } from 'src/app/services/postdata.service';
 import { Post } from '../models/blogmodel';
 
@@ -13,7 +12,7 @@ import { Post } from '../models/blogmodel';
 export class CreatePostComponent implements OnInit {
 
 
-      constructor( private _auth:AuthService, private _postserve:PostdataService, private router:Router) {}
+      constructor( private _postserve:PostdataService, private router:Router) {}
 
       image: any;
 
@@ -22,8 +21,10 @@ export class CreatePostComponent implements OnInit {
         ngOnInit():void {
         }
         
+        
         createPost()
         {
+          console.log(this.postModel.category)
         this._postserve.newPost(this.postModel)
         .subscribe(
             data => console.log('Success!', data),

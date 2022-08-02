@@ -102,6 +102,7 @@ if(mimetype&&extname){
           head : req.body.head,
           subhead : req.body.subhead,
           body : req.body.body,
+          category:req.body.category,
           authorname: localStorage.getItem('user'), 
           date : new Date()        
         }       

@@ -43,15 +43,17 @@ console.log("in addCategoryRoutes");
     })    
 
 // Creating or Adding a New Category //
-    categoryRouter.post('/insert',verifyToken,(req,res)=>{
+    categoryRouter.post('/insert',(req,res)=>{
         res.header("Access-Control-Allow-Origin","*")
         res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
         var category = {       
-            categoryName : req.body.categoryName,
+            categoryName : req.body.category,
             about : req.body.about
     }           
-    var category = new CategoryData(category);
-        category.save();
+                var category = new CategoryData(category);
+                category.save();
+                res.status(200).send('Success');
+           
     });
 
 // Deleting a Category //

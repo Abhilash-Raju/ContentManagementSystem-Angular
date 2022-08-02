@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import { AuthService } from 'src/app/services/auth.service';
-import { PostdataService } from 'src/app/services/postdata.service';
 import { Post } from '../models/blogmodel';
 import { Category } from '../models/categorymodel';
 import { Router } from '@angular/router';
@@ -27,7 +24,7 @@ export class AddCategoryComponent implements OnInit {
 
 
   
-  constructor(private authservice:AuthService,private _catservice: CategorydataService, private _postserve:PostdataService, private router:Router) {}
+  constructor(private _catservice: CategorydataService, private router:Router) {}
   
   
   ngOnInit(): void {
@@ -40,20 +37,15 @@ export class AddCategoryComponent implements OnInit {
       console.log(this.categoryModel)
       this._catservice.newCategory(this.categoryModel)
       .subscribe(
-        response =>console.log('Success!',response),
+        response =>{
+          console.log('Success!',response)
+          alert('Category Created! Please create the first post in the new Category')
+          this.router.navigate(['/createpost']);
+        }
+          ,
         error =>console.log('Error!',error)
         )
-
-      console.log(this.postModel)
-      this._postserve.newPost(this.postModel)
-      .subscribe(
-          data => console.log('Success!', data),
-          error => console.log('Error!', error)
-      )
-      // this.router.navigate(['/posts']);
+        
   }
-      onImageSelect(event: any){
-        const image=event.target.files[0];
-        this.image = image;
-      }
+      
 }
