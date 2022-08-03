@@ -6,8 +6,10 @@
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="topic">Sign Up</div>
 
+      <div [ngClass]="getclassName()" >{{message}}</div>
+
       <div class="input-box form-group">
-        <input [class.is-invalid]="userName?.invalid && userName?.touched"  class="form-control" formControlName ="userName" type="text" pattern='^[A-Za-z]{6,15}[\S]$' required>
+        <input [class.is-invalid]="userName?.invalid && userName?.touched"  class="form-control" formControlName ="userName" type="text" pattern='^[A-Za-z\s]{6,15}[\S]$' required>
         <label>Enter your Name</label>
         <div class="check container mt-4 pt-1" *ngIf="userName?.invalid && (userName.dirty || userName?.touched)">
             <label *ngIf="userName.errors?.['required']" class="text-danger">Name is Required</label>
@@ -25,17 +27,6 @@
         </div>
       </div>
       <div class="pt-1"></div>
-
-      <!-- 
-        <div class="input-box form-group">
-        <input [class.is-invalid]="contactno?.invalid && contactno?.touched" class="form-control" formControlName ="contactno" type="text" pattern="^([0-9]{3})([-. ]?)([0-9]{3})([-. ]?)([0-9]{4})$" required>
-        <label>Enter your Contact Number</label>
-        <div class="check container mt-4 pt-1" *ngIf="contactno?.invalid && (contactno.dirty || contactno?.touched)">
-          <label *ngIf="contactno.errors?.['required']" class="text-danger">Contact Number is Required</label>
-          <label *ngIf="contactno.errors?.['pattern']" class="text-danger">Invalid Contact Number</label>
-        </div>
-      </div>
-      <div class="pt-1"></div> -->
       
       <div class="input-box form-group">
         <input [class.is-invalid]="password?.invalid && password?.touched" class="form-control" formControlName ="password" type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$' required>

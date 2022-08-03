@@ -9,21 +9,21 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" >Home</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' >About</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("services")' >Services</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="contactus">Contact Us</a></li> -->
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="dashboard">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="root/rootprofile">Profile</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="posts">Posts</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="post">Post</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="categories">Categories</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="category">Category</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="createpost" >New Post</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="addcategory" >Add Category</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login">Log In</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register">Sign Up</a></li>
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" *ngIf="!_authService.loggedIn()">Home</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' *ngIf="!_authService.loggedIn()">About</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("services")' *ngIf="!_authService.loggedIn()">Services</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="contactus" *ngIf="!_authService.loggedIn()">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="dashboard" *ngIf="_authService.loggedIn()">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="root/rootprofile"*ngIf="_authService.loggedIn()&&_authService.userRoleAccess()">Profile</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="posts"  *ngIf="_authService.loggedIn()">Posts</a></li>
+                <!-- <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="post">Post</a></li> -->
+                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="categories" *ngIf="_authService.loggedIn()">Categories</a></li>
+                <!-- <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="category">Category</a></li> -->
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="createpost"  *ngIf="_authService.loggedIn()">New Post</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="addcategory"  *ngIf="_authService.loggedIn()">Add Category</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!_authService.loggedIn()">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register" *ngIf="!_authService.loggedIn()">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.loggedOutUser()">Log Out</a></li>
                 
             </ul>

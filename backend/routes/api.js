@@ -73,39 +73,36 @@ router.post('/signup', (req,res)=>{
         email: req.body.email,
         sub:req.body.subscribe,
         password: req.body.password,
+        role : req.body.subscribe? 'Admin' : 'AuthUser',
         confirmPassword: req.body.confirmPassword
       });
 
       if((userData.email)=='super@domain.com'&&(userData.password)=='Super@1234'){
-       alert("Hi! You can't Sign Up with Admin Credentials")
-        }
-        else if(userData.sub ==true){
-            userData.role = 'Admin';
-            userData.save((error,resgisteredUser)=>{
-            if(error){
-                console.log(error);
-            }
-            else{
-            let payload={subject:resgisteredUser};
-                let token =jwt.sign(payload,'secretKey')
-                localStorage.setItem('user', userData.username )
-                res.status(200).send({token});
-            }})
-        }
-        else{
-            userData.role = 'AuthUser';
-            // let user = new User(userData);
-            userData.save((error,resgisteredUser)=>{
-                if(error){
-                    console.log(error);
+       alert("Hey! You can't Sign Up with Root User Credentials")
+      }
+      else if(userData.role == 'Admin'){
+            userData.save()
+            .then((result) => {
+                res.json({ success: true, message: 'Admin User Created' });
+              })
+            .catch(err => {
+                if (err.code === 11000) {
+                  return res.json({ success: false, message: "Username or Email id already exists" })      
                 }
-                else{
-                    let payload={subject:resgisteredUser};
-                    let token =jwt.sign(payload,'secretKey')
-                    localStorage.setItem('user', userData.username)
-                    res.status(200).send({token});
+                return res.json({ success: false, message: `Sign Up Failed ${err}` })
+              })
+        }
+      else{
+            userData.save()
+            .then((result) => {
+                res.json({ success: true, message: `Authenticated User ${userData.username} Created` })
+              })
+            .catch(err => {
+                if (err.code === 11000) {
+                  return res.json({ success: false, message: "Username or Email id already exists" })      
                 }
-            })
+                return res.json({ success: false, message: `Sign Up Failed ${err}` })
+              })
         }
     }
     )

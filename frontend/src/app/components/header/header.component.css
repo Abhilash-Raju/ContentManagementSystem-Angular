@@ -23,9 +23,11 @@
       background: transparent;
     }
     .navbar li {
-      margin-left : 1em;
-      margin-right : 1em;
+      display:inline;
+      padding:0 auto;
+      margin-left: 35px;
   }
+
     #mainNav .navbar-brand {
       color: #06a3c2;
       font-weight: bolder;

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  className=""
+  message='';
 
   registrationForm!: FormGroup;
   constructor(private fb: FormBuilder, private authservice :AuthService,private _router: Router) { }
@@ -49,22 +51,38 @@ export class RegisterComponent implements OnInit {
   
   get contactno(){
     return this.registrationForm.controls['contactno']
-
   }
 
   onSubmit(){
     console.log(this.registrationForm.value)
     this.authservice.registeringUser(this.registrationForm.value)
     .subscribe(
-      response =>{
-        console.log('Success!',response);
-        alert("Sign up Successful. Please proceed to Login.");
-        this._router.navigate(['/login']);
+      (res:any) => {
+        if(res.success){
+          this.message='Account created'
+          console.log(this.message)
+          this.className='alert alert-success'
+          setTimeout(function(){
+            window.location.reload();
+         }, 3000);
+        }else 
+        {          
+          this.message=res.message;
+          console.log(this.message);
+          this.className='alert alert-danger'
+        }  
       },
-      error =>{
-        console.log('Error!',error)
-        alert("Something went wrong!!")
-      }
+        (err:any) => {
+          this.message="Server Error";
+          console.log('Error!',err)
+          this.className='alert alert-info'
+          setTimeout(function(){
+            window.location.reload();
+         }, 3000);        }
     )
+  }
+
+  getclassName(){
+    return this.className;
   }
 }

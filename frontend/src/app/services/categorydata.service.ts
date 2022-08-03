@@ -36,4 +36,9 @@ export class CategorydataService {
     .subscribe(data =>{console.log(data)})
   }
 
+  allCategory(){
+    return this.http.get("http://localhost:3000/categories/");
+  }
+
+
 }

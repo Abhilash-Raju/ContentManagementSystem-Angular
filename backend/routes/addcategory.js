@@ -4,9 +4,7 @@ const categoryRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const CategoryData = require('../models/category');
 let alert = require('alert'); 
-const multer=require('multer')
-const path = require('path');
-var fs = require('fs');
+
 const cors = require('cors');
 var bodyparser=require('body-parser');
 
@@ -26,7 +24,7 @@ console.log("in addCategoryRoutes");
   categoryRouter.use(cors());
 
 // Selecting one Category //
-    categoryRouter.get('/:id',verifyToken,  (req, res) => {
+    categoryRouter.get('/:id',  (req, res) => {
     const id = req.params.id;
     CategoryData.findOne({"_id":id})
         .then((category)=>{
@@ -34,30 +32,47 @@ console.log("in addCategoryRoutes");
         });
     })
 
+
+
 // Listing all the Categories //
-    categoryRouter.get('/',verifyToken, (req, res)=> {
+    categoryRouter.get('/', (req, res)=> {
         CategoryData.find()
                 .then(function(categories){
                     res.send(categories);
                 })
     })    
 
+// Listing all the category names
+    categoryRouter.get('/', (req, res)=> {
+    CategoryData.distinct("category")
+                .then(function(categories){
+                    res.send(categories);
+                })
+    })
+
 // Creating or Adding a New Category //
     categoryRouter.post('/insert',(req,res)=>{
         res.header("Access-Control-Allow-Origin","*")
         res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
-        var category = {       
-            categoryName : req.body.category,
+        var category1 = {       
+            category : req.body.category,
             about : req.body.about
     }           
-                var category = new CategoryData(category);
-                category.save();
-                res.status(200).send('Success');
-           
+    var category2 = new CategoryData(category1);
+    category2.save()
+    .then((result) => {
+        res.json({ success: true, message: "Category Created" })
+      })
+    .catch(err => {
+        if (err.code === 11000) {
+          return res.json({ success: false, message: `Category already exists` })
+        }
+        return res.json({ success: false, message: `Error ${err}`} )
+      })     
     });
 
 // Deleting a Category //
-    categoryRouter.delete('/remove/:id',verifyToken,(req,res)=>{
+    categoryRouter.delete('/remove/:id',(req,res)=>{
     id = req.params.id;
     console.log(id);
     CategoryData.findByIdAndDelete({"_id":id})
@@ -70,18 +85,18 @@ console.log("in addCategoryRoutes");
 
 // Update // 
 
-        categoryRouter.put('/update',verifyToken,(req,res)=>{
+        categoryRouter.put('/update',(req,res)=>{
         res.header("Access-Control-Allow-Origin","*")
         res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
         console.log(req.body)
         
         id=req.body._id,
-        categoryName = req.body.categoryName,
+        category = req.body.category,
         about = req.body.about
         
         CategoryData.findByIdAndUpdate({"_id":id},
                                     {$set:{
-                                        "categoryName" : req.body.categoryName,
+                                        "category" : req.body.category,
                                         "about" : req.body.about
                                     }})
         .then(function(){

@@ -111,7 +111,17 @@ if(mimetype&&extname){
         // postImagePath : req.files.image[0].filename,
      var post = new PostData(post);
      console.log(post)
-     post.save();
+     post.save()
+     .then((result) => {
+      res.json({ success: true, message: "Post Created" })
+    })
+  .catch(err => {
+      if (err.code === 11000) {
+        return res.json({ success: false, message: "Post Heading, Subheading or Body already exists" })
+      }
+      return res.json({ success: false, message: `Error ${err}`} )
+
+    })     
   });
   
 // Delete a Post //

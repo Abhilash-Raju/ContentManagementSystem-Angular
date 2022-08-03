@@ -6,29 +6,33 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
     head:{
         type:String, 
-        required: true 
-        },
+        required: true,
+        unique:true 
+    },
     subhead: {
         type:String, 
+        unique:true ,
         required: true
-        }, 
+    }, 
     body: {
         type:String, 
+        unique:true ,
         required: true
-        }, 
+    }, 
     postImagePath: {
         type:String
-       },
+    },
     date: {
         type: String,
         required:true
-        },
+    },
     authorname: {
         type: String,
         required:true
         },
     category :{
-        type:String
+        type:String,
+        required:true
     }
 });
 

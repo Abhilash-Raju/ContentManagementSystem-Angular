@@ -4,9 +4,10 @@ const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
-    categoryName:{
+    category:{
         type:String, 
-        required: true },
+        required:true,
+        unique:true },
     about:  {
         type:String, 
         required: true

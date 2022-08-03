@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import { Post } from '../models/blogmodel';
 import { Category } from '../models/categorymodel';
 import { Router } from '@angular/router';
 import { CategorydataService } from 'src/app/services/categorydata.service';
@@ -20,10 +19,10 @@ import { CategorydataService } from 'src/app/services/categorydata.service';
 export class AddCategoryComponent implements OnInit {
 
   categoryModel = new Category(0,"","");
-  postModel= new Post(0,"","","","","","","","");
 
+  message='';
+  className=""
 
-  
   constructor(private _catservice: CategorydataService, private router:Router) {}
   
   
@@ -35,17 +34,44 @@ export class AddCategoryComponent implements OnInit {
   createCategory()
   {
       console.log(this.categoryModel)
-      this._catservice.newCategory(this.categoryModel)
+      let category = this.categoryModel;
+      this._catservice.newCategory(category)
       .subscribe(
-        response =>{
-          console.log('Success!',response)
-          alert('Category Created! Please create the first post in the new Category')
-          this.router.navigate(['/createpost']);
+        (res:any) =>{
+          if(res.success){
+            this.message='Category created'          
+            console.log(this.message)
+            this.className='alert alert-success'
+            // alert("Category Created ")
+            setTimeout(function(){
+              window.location.reload();
+           }, 3000);     
+        }else 
+        {
+          this.message=res.message;
+         //alert("Category already exist or fields are empty")
+          console.log(this.message);
+          this.className='alert alert-danger'
+        //   setTimeout(function(){
+        //     window.location.reload();
+        //  }, 3000);     
+        }  
         }
-          ,
-        error =>console.log('Error!',error)
+        ,
+        (err:any) =>
+        {
+          this.message="Server Error";
+      //alert("server error")
+          this.className='alert alert-info'
+          //window.location.reload();
+          console.log('Error!',err)
+        }
         )
-        
+     // this.router.navigate(['/createpost']);    
+  }
+
+  getclassName(){
+    return this.className;
   }
       
 }

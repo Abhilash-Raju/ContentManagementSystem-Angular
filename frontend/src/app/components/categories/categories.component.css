@@ -84,7 +84,7 @@ header.masthead .site-heading .h1 {
 }
 
 .post-preview{
-  padding: 10px 0px 40px 80px;
+  padding: 10px 80px 40px 80px;
   border-radius: 20px;
   border: 2px solid rgb(228, 224, 224);
 }
@@ -116,6 +116,7 @@ header.masthead .site-heading .h1 {
 .post-preview > a > .post-subtitle {
   font-weight: 300;
   margin-bottom: 0.625rem;
+  justify-content: center;
 }
 .post-preview > .post-meta {
   font-size: 1.125rem;

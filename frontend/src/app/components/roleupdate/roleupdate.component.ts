@@ -28,7 +28,7 @@ export class RoleupdateComponent implements OnInit {
   editRoles()
   {    
     this._auth.editRole(this.userInstance);
-    alert(this.userInstance.username+ " role is updated successfully");
+    alert("Updated successfully");
     console.log(this.userInstance)
     this.router.navigate(['/root/rootprofile']);
   }

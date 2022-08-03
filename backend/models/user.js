@@ -6,13 +6,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username:{
         type:String, 
+        unique: true, 
         required: true },
     email: {
         type:String, 
         required: true,
-        index: {
-            unique: true, 
-        },
+        unique: true, 
         match:/[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
     sub : {
         type:Boolean,
@@ -33,4 +32,7 @@ const userSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('user',userSchema,'user')
+const User = mongoose.model('user',userSchema);
+
+
+module.exports = User

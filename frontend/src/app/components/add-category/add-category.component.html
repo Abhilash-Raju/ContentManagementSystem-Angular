@@ -1,8 +1,10 @@
         <form  (ngSubmit)="categoryForm.valid&&createCategory()" #categoryForm="ngForm">
             <div class="topic pb-2 fs-4"> <b> Create a Category</b></div>
 
+            <div [ngClass]="getclassName()" >{{message}}</div>
+
             <div class="input-box form-group">
-                <input [class.is-invalid]="category?.invalid && category?.touched" class="form-control" name ="category" #category="ngModel" [(ngModel)]="categoryModel.category" type="text"  pattern="^[A-Za-z\s]{5,}$"  required>
+                <input [class.is-invalid]="category?.invalid && category?.touched" class="form-control" name ="category" #category="ngModel" [(ngModel)]="categoryModel.category" type="text"  pattern="^[\w\s]{5,}$"  required>
                 <label>Enter Category</label>
                 <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted||category?.invalid && category?.touched">
                 <label *ngIf="categoryForm.submitted&&category.errors?.['required']" class="text-danger">Category is Required</label>
@@ -12,7 +14,7 @@
             <div class="pt-1"></div>
             
             <div class="input-box form-group">
-                <input [class.is-invalid]="about?.invalid && about?.touched" class="form-control py-3" name ="about" #about="ngModel" [(ngModel)]="categoryModel.about" type="text"  pattern="^[A-Za-z\s]{8,}$"  required/>
+                <input [class.is-invalid]="about?.invalid && about?.touched" class="form-control py-3" name ="about" #about="ngModel" [(ngModel)]="categoryModel.about" type="text"  pattern='^[\w\s,!@$%&*\)\(+=._-]{8,}$'  required/>
                 <label>Few Words About the Category</label>
                 <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted||about?.invalid && about?.touched">
                 <label *ngIf="categoryForm.submitted&&about.errors?.['required']" class="text-danger">Details About Category is Required</label>
