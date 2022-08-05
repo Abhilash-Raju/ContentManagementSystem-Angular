@@ -7,6 +7,12 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
                             <h1 class="text-success">{{categoryItem.category}}<span class="text-warning">!!</span></h1>
+                            <div *ngIf="_authservice.userRoleAccess()" >
+                                
+                                <button class="btn btn-warning" id="edit" style="cursor:pointer"  > Edit</button>
+                             
+                                <button class="btn btn-danger" id="delete" style="cursor:pointer" > Delete</button>   
+                            </div>
                         </div>
                     </div>
                 </div>

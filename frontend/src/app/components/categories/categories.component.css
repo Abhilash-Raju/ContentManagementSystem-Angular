@@ -7,7 +7,8 @@ header.masthead {
   background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
-  background-image: url('/assets/images/pexels-miguel-á-padriñán-1591056.jpg')
+  background-image: url('/assets/images/pexels-miguel-á-padriñán-1591056.jpg');
+  font-family: san;
 }
 header.masthead:before {
   content: "";
@@ -131,4 +132,31 @@ header.masthead .site-heading .h1 {
   .post-preview > a > .post-title {
     font-size: 2.25rem;
   }
+}
+
+
+.input-box a[type="submit"]{
+  color: #fff;
+  background: rgba(103, 235, 222, 0.477);
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  border-radius: 30px;
+  justify-content: center;
+  font-weight: bolder;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+}
+
+.input-box a[type="submit"]:hover{
+  background-color:  #37736f;
+  outline: none;
+  border: 1px solid ;
+  color: #fba70b ;
+  transition: all .2s ease-in-out;
+  transform:scale(1.1);
 }

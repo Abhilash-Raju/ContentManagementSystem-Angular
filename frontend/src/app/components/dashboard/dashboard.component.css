@@ -2,8 +2,17 @@
 
 body {
   font-size: 1.25rem;
+  
 }
+main{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg') */
+  /* background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg'); */
+  background-image: url('/assets/images/milad-fakurian-E8Ufcyxz514-unsplash.jpg');
 
+}
 hr {
   background-color: #dee2e6;
   opacity: 1;
@@ -50,25 +59,21 @@ blockquote {
 
 header.masthead {
   position: relative;
-  margin-bottom: 3rem;
-  padding-top: calc(8rem + 57px);
-  padding-bottom: 8rem;
-  background: no-repeat center center;
-  background-color: #6c757d;
-  background-size: cover;
-  background-attachment: scroll;
-  background-image: url('/assets/images/pexels-miguel-á-padriñán-1591056.jpg')
+  margin-bottom: 2rem;
+  padding-top: calc(4rem + 57px);
+  padding-bottom: 4rem;
+
 }
-header.masthead:before {
+/* header.masthead:before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #212529;
+  background-color: rgb(56, 143, 134);
   opacity: 0.5;
-}
+} */
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
@@ -90,7 +95,6 @@ header.masthead .site-heading .subheading {
   line-height: 1.1;
   display: block;
   margin-top: 0.625rem;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .post-heading h1, header.masthead .post-heading .h1 {
   font-size: 2.25rem;
@@ -104,13 +108,11 @@ header.masthead .post-heading .subheading {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0.75rem 0 2rem;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .post-heading .meta {
   font-size: 1.25rem;
   font-weight: 300;
   font-style: italic;
-  font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .post-heading .meta a {
   color: #fff;
@@ -153,6 +155,8 @@ header.masthead .site-heading .h1 {
   justify-content: center;
   border-radius: 20px;
   border: 2px solid rgb(228, 224, 224);
+  background-color: rgba(241, 221, 221, 0.496);
+
 }
 .post-preview > a {
   color: #212529;
@@ -180,7 +184,7 @@ header.masthead .site-heading .h1 {
   font-size: 1.125rem;
   font-style: italic;
   margin-top: 0;
-  color: #6c757d;
+  color: #ffffff;
 }
 .post-preview > .post-meta > a {
   text-decoration: none;
@@ -204,7 +208,8 @@ header.masthead .site-heading .h1 {
 }
 #blog .blog-thumb {
   position: relative;
-  border: 2px solid rgba(55,143,134,0.36);
+  border: 2px solid white;
+  background-color: rgba(241, 221, 221, 0.496);
   border-radius: 20px;
   padding: 60px;
   -wekbit-transition: all 1000ms linear;
@@ -215,10 +220,9 @@ header.masthead .site-heading .h1 {
 #blog .blog-thumb:hover h3 a
 { 
   overflow: hidden;
-  color: #fba70b ;
+  color: #fffefd ;
   transition: all .2s ease-in-out;
   transform:scale(1.01)  ;
-
 }
 
 a {

@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit {
   category(cat:any)
   {
     localStorage.setItem("categoryid", cat._id.toString());
-    localStorage.setItem("category", cat.category.toString());
+    // localStorage.setItem("category", cat.category.toString());
     this.router.navigate(['category']);
   }
 

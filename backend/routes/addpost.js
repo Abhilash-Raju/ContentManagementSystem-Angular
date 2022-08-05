@@ -104,7 +104,7 @@ if(mimetype&&extname){
           body : req.body.body,
           category:req.body.category,
           authorname: localStorage.getItem('user'), 
-          date : new Date()        
+          date : new Date().toDateString()       
         }       
 
         console.log(`This is the user ${localStorage.getItem('user')}`);

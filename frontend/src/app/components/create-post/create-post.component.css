@@ -37,23 +37,10 @@ p{
     transition: all 0.3s ease;
   }
   
-  .input-box .button{
-      justify-content: center;
-      background-color: rgb(56, 143, 134);
-      font-weight: bolder;
-  }
-  
-  
-  .input-box .button :hover{
-      color: rgba(230, 173, 88, 0.8) ;
-      transition: all .2s ease-in-out;
-      transform:scale(1.1);
-      text-decoration: underline;
-    }
   .input-box input:focus,
   .input-box input:valid
-  /* ,  .input-box textarea:focus,
-  .input-box textarea:valid */
+  ,  .input-box textarea:focus,
+  .input-box textarea:valid
   {
     border-color:  #24c2b8;
     background-color: #fff;

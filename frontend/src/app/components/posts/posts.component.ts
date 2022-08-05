@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
 
   singlepost(post:any){
     localStorage.setItem("postid", post._id.toString());
-    localStorage.setItem("postcategory", post.category.toString());
+    // localStorage.setItem("postcategory", post.category.toString());
     this.router.navigate(['post']);
   }
 }

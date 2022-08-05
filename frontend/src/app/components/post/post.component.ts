@@ -29,12 +29,11 @@ export class PostComponent implements OnInit {
     let postId = localStorage.getItem("postid");
     this._postservice.getPost(postId).subscribe((data)=>{
     this.postItem=JSON.parse(JSON.stringify(data));
-    console.log(this.postItem)
   })
-
-  this._cat.allCategory().subscribe((data)=>{
-    this.cats=JSON.parse(JSON.stringify(data));
-  })
+     this._cat.allCategory()
+     .subscribe((data)=>{
+      this.cats=JSON.parse(JSON.stringify(data));
+      })
   }
 
 }

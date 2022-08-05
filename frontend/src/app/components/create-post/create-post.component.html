@@ -40,7 +40,7 @@
                 <div class="pt-1"></div>
                 
                 <div class="input-box form-group">
-                  <input name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" [(ngModel)]="postModel.body" type="text"  required>
+                  <textarea name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" [(ngModel)]="postModel.body" type="text"  required> </textarea>
                   <label>Post Body</label>
                   <div class="check container mt-4 pt-1" *ngIf="postform.submitted||body?.invalid && (body.dirty || body?.touched)">
                       <label *ngIf="postform.submitted&&body.errors?.['required']" class="text-danger">Body is Required</label>

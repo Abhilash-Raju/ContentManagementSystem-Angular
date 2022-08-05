@@ -8,6 +8,7 @@ import {MaterialModule} from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthService } from './services/auth.service';
+import {PostdataService} from './services/postdata.service';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -56,7 +57,7 @@ import { RoleupdateComponent } from './components/roleupdate/roleupdate.componen
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule  ],
-  providers: [AuthService],
+  providers: [AuthService,PostdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
