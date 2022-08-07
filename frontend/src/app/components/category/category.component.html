@@ -7,11 +7,11 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
                             <h1 class="text-success">{{categoryItem.category}}<span class="text-warning">!!</span></h1>
-                            <div *ngIf="_authservice.userRoleAccess()" >
+                            <div *ngIf="_authservice.roleAccess()" >
                                 
-                                <button class="btn btn-warning" id="edit" style="cursor:pointer"  > Edit</button>
+                                <button class="btn btn-warning" id="edit" style="cursor:pointer"  (click)="editCategory(categoryItem)"> Edit</button>
                              
-                                <button class="btn btn-danger" id="delete" style="cursor:pointer" > Delete</button>   
+                                <button class="btn btn-danger" id="delete" style="cursor:pointer" (click)="deleteCategory(categoryItem)" > Delete</button>   
                             </div>
                         </div>
                     </div>

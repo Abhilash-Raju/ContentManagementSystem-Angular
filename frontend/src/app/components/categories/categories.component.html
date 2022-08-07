@@ -1,31 +1,34 @@
-<header class="masthead">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>{{title}}<span class="text-warning">!!</span></h1>
-                    <span class="subheading"><b class="text-success">Choose<span class="text-danger"> Your</span></b> <b class="text-warning"> Taste</b></span>
-                    <div class="input-box" *ngIf="_authservice.roleAccess()">
-                        <a href="/addcategory" type="submit" >Add a New Category</a>
+<main>
+    <header class="masthead">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>{{title}}<span class="text-warning">!!</span></h1>
+                        <span class="subheading"><b class="text-success">Choose<span class="text-danger"> Your</span></b> <b class="text-warning"> Taste</b></span>
+                        <div class="input-box" *ngIf="_authservice.roleAccess()">
+                            <a href="/addcategory" type="submit" >Add a New Category</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
-<!-- Main Content-->
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-10" *ngFor="let cat of cats;"  >
-            <!-- Post preview-->
-            <div class="post-preview" (click)="category(cat)" >
-                <a>
-                    <h2 class="post-title">{{cat.category}}</h2>
-                </a>
-                <h3 class="post-subtitle" maxLength="100">{{cat.about}}</h3>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-       </div>
-</div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-10" *ngFor="let cat of cats;"  >
+                <!-- Post preview-->
+                <div class="post-preview" (click)="category(cat)" >
+                    <a>
+                        <h2 class="post-title">{{cat.category}}</h2>
+                    </a>
+                    <h3 class="post-subtitle" maxLength="100">{{cat.about}}</h3>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Post preview-->
+           </div>
+        </div>
+    </div> 
+</main>

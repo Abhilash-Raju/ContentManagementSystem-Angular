@@ -24,7 +24,7 @@ console.log("in addCategoryRoutes");
   categoryRouter.use(cors());
 
 // Selecting one Category //
-    categoryRouter.get('/:id',  (req, res) => {
+    categoryRouter.get('/:id',verifyToken,  (req, res) => {
     const id = req.params.id;
     CategoryData.findOne({"_id":id})
         .then((category)=>{
@@ -35,7 +35,7 @@ console.log("in addCategoryRoutes");
 
 
 // Listing all the Categories //
-    categoryRouter.get('/', (req, res)=> {
+    categoryRouter.get('/',verifyToken, (req, res)=> {
         CategoryData.find()
                 .then(function(categories){
                     res.send(categories);
@@ -43,7 +43,7 @@ console.log("in addCategoryRoutes");
     })    
 
 // Listing all the category names
-    categoryRouter.get('/', (req, res)=> {
+    categoryRouter.get('/',verifyToken, (req, res)=> {
     CategoryData.distinct("category")
                 .then(function(categories){
                     res.send(categories);
@@ -51,7 +51,7 @@ console.log("in addCategoryRoutes");
     })
 
 // Creating or Adding a New Category //
-    categoryRouter.post('/insert',(req,res)=>{
+    categoryRouter.post('/insert',verifyToken,(req,res)=>{
         res.header("Access-Control-Allow-Origin","*")
         res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
         var category1 = {       
@@ -72,7 +72,7 @@ console.log("in addCategoryRoutes");
     });
 
 // Deleting a Category //
-    categoryRouter.delete('/remove/:id',(req,res)=>{
+    categoryRouter.delete('/remove/:id',verifyToken,(req,res)=>{
     id = req.params.id;
     console.log(id);
     CategoryData.findByIdAndDelete({"_id":id})
@@ -85,7 +85,7 @@ console.log("in addCategoryRoutes");
 
 // Update // 
 
-        categoryRouter.put('/update',(req,res)=>{
+        categoryRouter.put('/update',verifyToken,(req,res)=>{
         res.header("Access-Control-Allow-Origin","*")
         res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
         console.log(req.body)
@@ -99,8 +99,7 @@ console.log("in addCategoryRoutes");
                                         "category" : req.body.category,
                                         "about" : req.body.about
                                     }})
-        .then(function(){
-        
+        .then(function(){        
             res.send();
         })
         })

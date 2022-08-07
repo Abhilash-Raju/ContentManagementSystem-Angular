@@ -20,7 +20,7 @@ export class AuthService {
   private _signupUrl ="http://localhost:3000/api/signup"
   private _loginUrl ="http://localhost:3000/api/login"
   constructor(private http:HttpClient,
-    private _router:Router,private _postservice: PostdataService,private injector: Injector) { 
+    private _router:Router,private injector: Injector) { 
     }
 
     
@@ -29,7 +29,8 @@ export class AuthService {
       let _postservice = this.injector.get(PostdataService);
       let postId = localStorage.getItem("postid");
       _postservice.getPost(postId)
-      .subscribe((data)=>{
+      .subscribe(
+        (data)=>{
                  this.postItem=JSON.parse(JSON.stringify(data));
                 })
       let token=localStorage.getItem('token')||"";
@@ -57,7 +58,7 @@ export class AuthService {
     this._router.navigate(['/home']);
   }
   getToken(){
-    console.log('Hi GetToken');
+    // console.log('Hi GetToken');
     return localStorage.getItem('token');
   }
 
@@ -67,7 +68,7 @@ export class AuthService {
 
   deleteUser(id:any)
   {
-    console.log("id to delete", id);
+    console.log("Id to delete", id);
     return this.http.delete("http://localhost:3000/api/remove/"+id)
   }
 

@@ -36,4 +36,23 @@ export class PostComponent implements OnInit {
       })
   }
 
+  editPost(post:any)
+  {
+    localStorage.setItem("postid", post._id.toString());
+    this.router.navigate(['editpost']);
+  }
+
+  deletePost(post:any)
+  {
+    if(confirm("Are you sure to delete the Post ?")) {
+    console.log(post._id);
+    this._postservice.deletePost(post._id)
+      .subscribe((data) => {
+        this.post = this.post.filter(p => p !== post);
+      });
+      alert("Post is deleted successfully");
+      this.router.navigate(['posts']);
+    }
+  }
+
 }

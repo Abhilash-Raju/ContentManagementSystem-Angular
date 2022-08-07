@@ -31,7 +31,6 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'editcategory',component:EditcategoryComponent},
 {path:'editpost',component:EditpostComponent},
-{path:'editpost',component:EditpostComponent},
 {path:'roleupdate',component:RoleupdateComponent},
 {path:'root',component:RootdashComponent,
 children:

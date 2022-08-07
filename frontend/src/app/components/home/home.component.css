@@ -5,10 +5,10 @@ welcome
 */
 .welcome-area {
   width: 100%;
-  background-image: url(/assets/images/Best-Fitness-Blogs.jpg);
+  top: 20%;
+  background-image: url(/assets/images/undraw_fitness_stats_sht6.svg);
   background-repeat: no-repeat;
   background-position: right bottom;
-  padding-right: 100px;
 }
 
 .welcome-area .header-text .left-text {
@@ -32,10 +32,9 @@ welcome
 }
 
 .welcome-area .header-text p {
-  font-weight: 300;
-  font-size: 17px;
-  color: #7a7a7a;
-  line-height: 30px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 50px;
   letter-spacing: 0.25px;
   margin-bottom: 40px;
   position: relative;

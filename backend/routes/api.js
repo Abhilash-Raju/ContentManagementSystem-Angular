@@ -33,7 +33,7 @@ router.get('/users', function (req, res) {
   })
 
 
-  router.put('/update', (req,res)=>{
+  router.put('/update',verifyToken, (req,res)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
     console.log(req.body)

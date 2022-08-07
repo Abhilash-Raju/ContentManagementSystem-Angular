@@ -3,25 +3,25 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
         <form #postform="ngForm" novalidate (ngSubmit)="postform.valid&&createPost()">
-                <div class="topic fs-4"> <b> Post Content</b></div>
+                <div class="topic fs-4"> <b> {{title}}</b></div>
 
                 <div [ngClass]="getclassName()" >{{message}}</div>
 
                 <div class="input-box form-group">
-                  <input  class="form-control" [class.is-invalid]="head?.invalid && head?.touched"  name="head" #head="ngModel" [(ngModel)]="postModel.head" type="text" pattern='^[\w\s!@#\$%\^\&*\)\(+=._-""]{6,}$'  required>
+                  <input  class="form-control" [class.is-invalid]="head?.invalid && head?.touched"  name="head" #head="ngModel" [(ngModel)]="postModel.head" type="text" pattern='^[\w\s!@#$%^&.-_")+=(]{6,}'  required>
                   <label>Post Heading</label>
                   <div class="check container mt-4 pt-1" *ngIf="postform.submitted||head?.invalid && (head.dirty || head?.touched)">
-                      <label *ngIf="postform.submitted&&head.errors?.['required']" class="text-danger">Heading is Required</label>
+                      <label *ngIf="postform.submitted||head.errors?.['required']" class="text-danger">Heading is Required</label>
                       <label *ngIf="head.errors?.['pattern']" class="text-danger">Heading must have at least 6 characters and only alphabets</label>
                   </div>
                 </div>
                 <div class="pt-1"></div>
           
                 <div class="input-box form-group">
-                  <input name="subhead" #subhead="ngModel" [class.is-invalid]="subhead?.invalid && subhead?.touched" class="form-control" [(ngModel)]="postModel.subhead" type="text"  required>
+                  <input name="subhead" #subhead="ngModel" [class.is-invalid]="subhead?.invalid && subhead?.touched" class="form-control" [(ngModel)]="postModel.subhead" type="text" pattern='^[\w\s!@#$%^&.-_")+=(]{6,}' required>
                   <label>Post Subheading</label>
                   <div class="check container mt-4 pt-1" *ngIf="postform.submitted||subhead?.invalid && (subhead.dirty || subhead?.touched)">
-                      <label *ngIf="postform.submitted&&subhead.errors?.['required']" class="text-danger">Subhead is Required</label>
+                      <label *ngIf="postform.submitted||subhead.errors?.['required']" class="text-danger">Subhead is Required</label>
                       <label *ngIf="subhead.errors?.['pattern']" class="text-danger">Invalid Subhead</label>
                   </div>
                  </div>
@@ -30,31 +30,29 @@
                 <div class="form-group">
                     <label class="pb-3">Post Category</label>
                     <div class="form-check" *ngFor="let cat of cats;">
-                        <input name="category" #category="ngModel" value="{{cat.category}}" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required>
-                        <label for="category" class="form-check-label">{{cat.category}}</label>
+                        <label for="category" class="form-check-label">
+                            <input name="category" #category="ngModel" value="{{cat.category}}" [class.is-invalid]="category?.invalid && category?.touched" class="form-check-input"  [(ngModel)]="postModel.category" type="radio"  required/>
+                        {{cat.category}}
+                        </label>
                     </div>
                   <!-- <div class="check container mt-4 pt-1" *ngIf="postform.submitted||category?.invalid && category?.touched">
-                      <label *ngIf="postform.submitted&&category.errors?.['required']" class="text-danger">Category is Required</label>
+                      <label *ngIf="postform.submitted||category.errors?.['required']" class="text-danger">Category is Required</label>
                   </div> -->
                  </div>
                 <div class="pt-1"></div>
                 
                 <div class="input-box form-group">
-                  <textarea name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" [(ngModel)]="postModel.body" type="text"  required> </textarea>
+                  <textarea rows="2" cols="1" name="body" #body="ngModel" [class.is-invalid]="body?.invalid && body?.touched" class="form-control" pattern='^[\w\s!@#$%^&.-_")+=(]{15,}' [(ngModel)]="postModel.body" type="text"  required> </textarea>
                   <label>Post Body</label>
                   <div class="check container mt-4 pt-1" *ngIf="postform.submitted||body?.invalid && (body.dirty || body?.touched)">
-                      <label *ngIf="postform.submitted&&body.errors?.['required']" class="text-danger">Body is Required</label>
+                      <label *ngIf="postform.submitted||body.errors?.['required']" class="text-danger">Body is Required</label>
                       <label *ngIf="body.errors?.['pattern']" class="text-danger">Invalid Body</label>
                   </div>
                  </div>
                 <div class="pt-1"></div>
             
-                <div class="input-box form-group">
-                    <input (change)="onImageSelect($event)"  name="image"  class="form-control" placeholder="Choose a Post Image" type="file" accept="image/png, image/jpeg, image/jpg" required>
-                </div>
-                <div class="pt-1"></div>
             <div class="input-box">
-                <input type="submit" class="button" value="Submit">
+                <input type="submit" class="button" value="Publish">
             </div>
         </form>
             </div>

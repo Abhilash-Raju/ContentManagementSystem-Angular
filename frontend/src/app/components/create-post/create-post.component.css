@@ -1,7 +1,7 @@
 form {
     position: absolute;
     margin: auto;
-    top: 50%;
+    top: 45%;
     left: 50%;
     width: 850px;
     min-height: auto;
@@ -22,8 +22,8 @@ p{
     position: relative;
   }
 
-  .input-box input
-  /* ,  .input-box textarea */
+  .input-box input,  
+  .input-box textarea
   {
     position: absolute;
     height: 100%;
@@ -84,3 +84,6 @@ p{
     border-radius: 100%;
     }
 
+    textarea{
+      resize: none;
+    }

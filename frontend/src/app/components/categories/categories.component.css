@@ -6,8 +6,8 @@ header.masthead {
   background: no-repeat center center;
   background-color: #6c757d;
   background-size: cover;
-  background-attachment: scroll;
-  background-image: url('/assets/images/pexels-miguel-á-padriñán-1591056.jpg');
+  background-attachment: fixed;
+  background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg');
   font-family: san;
 }
 header.masthead:before {
@@ -20,6 +20,18 @@ header.masthead:before {
   background-color: #212529;
   opacity: 0.5;
 }
+
+
+main{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg') */
+  /* background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg'); */
+  background-image: url('/assets/images/pexels-karolina-grabowska-4198023.jpg');
+
+}
+
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {

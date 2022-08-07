@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,7 @@ import { EditcategoryComponent } from './components/editcategory/editcategory.co
 import { RootComponent } from './components/root/root.component';
 import { RootdashComponent } from './components/rootdash/rootdash.component';
 import { RoleupdateComponent } from './components/roleupdate/roleupdate.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,13 @@ import { RoleupdateComponent } from './components/roleupdate/roleupdate.componen
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule  ],
-  providers: [AuthService,PostdataService],
+  providers: [AuthService,PostdataService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+
+    }  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

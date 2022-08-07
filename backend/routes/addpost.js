@@ -75,7 +75,7 @@ if(mimetype&&extname){
 }
 
 // Single Post //
-    postRouter.get('/:id',  (req, res) => {
+    postRouter.get('/:id', verifyToken,  (req, res) => {
     const id = req.params.id;
     PostData.findOne({"_id":id})
       .then((post)=>{
@@ -84,7 +84,7 @@ if(mimetype&&extname){
     })
 
 // All Posts //
-    postRouter.get('/', function (req, res) {
+    postRouter.get('/',verifyToken, function (req, res) {
       PostData.find()
               .then(function(posts){
                   res.send(posts);
@@ -92,7 +92,7 @@ if(mimetype&&extname){
     })    
 
 // Create Post //
-    postRouter.post('/insert', upload.fields([
+    postRouter.post('/insert',verifyToken, upload.fields([
       {name: "image", maxCount: 1},
     ]),(req,res)=>{
       res.header("Access-Control-Allow-Origin","*")
@@ -126,7 +126,7 @@ if(mimetype&&extname){
   
 // Delete a Post //
 
-  postRouter.delete('/remove/:id',(req,res)=>{
+  postRouter.delete('/remove/:id',verifyToken,(req,res)=>{
      
     id = req.params.id;
     console.log(id);
@@ -140,7 +140,7 @@ if(mimetype&&extname){
   
 // Updating a Post //
 
-  postRouter.put('/update', upload.fields([
+  postRouter.put('/update',verifyToken, upload.fields([
     {name: "file", maxCount: 1},
     {name: "image", maxCount: 1},
   ]),(req,res)=>{
@@ -152,12 +152,18 @@ if(mimetype&&extname){
     head = req.body.head,
     subhead = req.body.subhead,
     body = req.body.body
+    category=req.body.category,
+    authorname= localStorage.getItem('user'), 
+    date = new Date().toDateString()    
 
     PostData.findByIdAndUpdate({"_id":id},
                                 {$set:{
                                 "head" : req.body.head,
                                 "subhead" : req.body.subhead,
-                                "body" : req.body.body
+                                "body" : req.body.body,
+                                "category":req.body.category,
+                                "authorname": localStorage.getItem('user'), 
+                                "date" : new Date().toDateString()    
                                 }})
    .then(function(){
     

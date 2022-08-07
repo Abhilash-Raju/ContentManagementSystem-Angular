@@ -20,11 +20,12 @@
 
 			<div class="col-md-8 col-sm-7">
 				<p>Written on: {{postItem.date}}</p>
+				<!-- <p > -->
 				<p *ngIf="_authservice.postAccess()||_authservice.roleAccess()" >
 					           
-					<button class="btn btn-warning" id="edit" style="cursor:pointer"  > Edit</button>
+					<button class="btn btn-warning" id="edit" style="cursor:pointer" (click)="editPost(postItem)" > Edit</button>
 				 
-					<button class="btn btn-danger" id="delete" style="cursor:pointer" > Delete</button>   
+					<button class="btn btn-danger" id="delete" style="cursor:pointer" (click)="deletePost(postItem)" > Delete</button>   
 				</p>
 				<div class="blog-author wow fadeInUp" data-wow-delay="1s">
 					<div class="media">

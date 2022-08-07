@@ -14,7 +14,7 @@ export class CreatePostComponent implements OnInit {
 
 
       constructor( private _postserve:PostdataService, private router:Router,private _cat:CategorydataService) {}
-
+      title :String ="Create a New Post"
       image: any;
       message='';
       className=""
@@ -68,10 +68,10 @@ export class CreatePostComponent implements OnInit {
         )
         }
 
-        onImageSelect(event: any){
-            const image=event.target.files[0];
-            this.image = image;
-          }
+        // onImageSelect(event: any){
+        //     const image=event.target.files[0];
+        //     this.image = image;
+        //   }
 
         getclassName(){
           return this.className;
