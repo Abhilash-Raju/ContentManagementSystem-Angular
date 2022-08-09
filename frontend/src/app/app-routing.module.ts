@@ -16,23 +16,26 @@ import { RegisterComponent } from './components/register/register.component';
 import { RoleupdateComponent } from './components/roleupdate/roleupdate.component';
 import { RootComponent } from './components/root/root.component';
 import { RootdashComponent } from './components/rootdash/rootdash.component';
+import { AuthGuard } from './guards/auth.guard';
+import { HasRoleGuard } from './guards/has-role.guard';
+import { RootGuard } from './guards/root.guard';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'register',component:RegisterComponent},
 {path:'login',component:LoginComponent},
-{path:'dashboard',component:DashboardComponent},
-{path:'createpost',component:CreatePostComponent},
-{path:'addcategory',component:AddCategoryComponent},
-{path:'contactus',component:ContactusComponent},
-{path:'posts',component:PostsComponent},
-{path:'post',component:PostComponent},
-{path:'categories',component:CategoriesComponent},
-{path:'category',component:CategoryComponent},
+{path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
+{path:'createpost',component:CreatePostComponent,canActivate:[AuthGuard]},
+{path:'addcategory',component:AddCategoryComponent,canActivate:[AuthGuard,HasRoleGuard]},
+{path:'contactus',component:ContactusComponent,canActivate:[AuthGuard]},
+{path:'posts',component:PostsComponent,canActivate:[AuthGuard]},
+{path:'post',component:PostComponent,canActivate:[AuthGuard]},
+{path:'categories',component:CategoriesComponent,canActivate:[AuthGuard]},
+{path:'category',component:CategoryComponent,canActivate:[AuthGuard]},
 {path:'home',component:HomeComponent},
-{path:'editcategory',component:EditcategoryComponent},
-{path:'editpost',component:EditpostComponent},
-{path:'roleupdate',component:RoleupdateComponent},
-{path:'root',component:RootdashComponent,
+{path:'editcategory',component:EditcategoryComponent,canActivate:[AuthGuard]},
+{path:'editpost',component:EditpostComponent,canActivate:[AuthGuard]},
+{path:'roleupdate',component:RoleupdateComponent,canActivate:[AuthGuard,RootGuard]},
+{path:'root',component:RootdashComponent,canActivate:[AuthGuard,RootGuard],
 children:
 [{path:'rootprofile',component:RootComponent}]
 },

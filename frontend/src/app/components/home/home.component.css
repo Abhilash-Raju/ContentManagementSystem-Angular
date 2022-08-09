@@ -3,18 +3,27 @@
 welcome
 --------------------------------------------- 
 */
-.welcome-area {
-  width: 100%;
-  top: 20%;
-  background-image: url(/assets/images/undraw_fitness_stats_sht6.svg);
-  background-repeat: no-repeat;
-  background-position: right bottom;
+#home{
+  animation: slideIn 1s;
+  height: 100vh;
+}
+
+.welcome-area .header-text{
+  padding-top: 18%;
+  background-color: #6c757d;
+  background: no-repeat center center;
+  background-color: #6c757d;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  background-image: url('/assets/images/pexels-karolina-grabowska-5202055.jpg')
+
 }
 
 .welcome-area .header-text .left-text {
-  position: relative;
   align-self: center;
-  margin-top: 250px;
+  flex: auto;
+  flex-direction: column;
 }
 
 .welcome-area .header-text h1 {
@@ -32,21 +41,52 @@ welcome
 }
 
 .welcome-area .header-text p {
-  font-weight: 400;
+  font-weight: bold;
   font-size: 20px;
+  color: #06a3c2;
   line-height: 50px;
   letter-spacing: 0.25px;
-  margin-bottom: 40px;
   position: relative;
 }
 
+#body{
+  
+  background-color: rgba(255, 255, 255, 0.797);
+  padding-bottom: 200px;  
+  animation: fadeInUp 1s linear;
+  animation-delay: calc(var(--scroll) * -1s);
+}
 
-/*-- Services --*/
 
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+
+}
+
+@keyframes fadeInUp{
+  from{
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+
+}
 
 .heading-section {
     text-align: center;
-    padding: 100px 0 80px 0;
+    padding: 100px 0 40px 0;
   }
   
 .service-item h4 {
@@ -58,18 +98,25 @@ welcome
     margin-top: 25px;
   }
   
-  .col-sm-10 .service-item{
+  .col-sm-12 .service-item{
       padding: 30px;
-      border: 1px solid #f0f0f0;
-      border-radius: 10px;
-      position: relative;
-      -webkit-box-shadow: 10px 10px 115px -40px rgba(251,167,11,1);
-      -moz-box-shadow: 10px 10px 115px -40px rgba(251,167,11,1);
-      box-shadow: 10px 10px 115px -40px rgba(251,167,11,1);
       border-radius: 20px;
       margin-top: 40px;
       text-align: center;
+      border: 3px solid rgba(228, 224, 224, 0.708);
+      -wekbit-transition: all 500ms linear;
+      transition: all 500ms linear;
+  }
 
+  .col-sm-12 .service-item:focus, .col-sm-12 .service-item:hover{
+      -webkit-box-shadow: 10px 10px 115px -40px rgb(247, 219, 168);
+      -moz-box-shadow: 10px 10px 115px -40px rgb(247, 219, 168);
+      box-shadow: 10px 10px 115px -40px rgb(243, 201, 123);
+      border: 2px solid rgba(251,167,11,1);
+      color: #0085A1;
+      text-align: center;
+      transition: all .2s ease-in-out;
+      transform:scale(1.01);
   }
   /*-- End Services --*/
 
@@ -87,15 +134,24 @@ welcome
     background-size: cover !important;
   }
   #blog .blog-thumb {
-    border: 1px solid #f0f0f0;
     position: relative;
-    -webkit-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
-    -moz-box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
-    box-shadow: 0px 0px 36px 11px rgba(55,143,134,0.36);
+    border: 3px solid rgba(228, 224, 224, 0.708);
+    text-align: center;
     border-radius: 20px;
     padding: 60px;
-    -wekbit-transition: all 1000ms linear;
-    transition: all 1000ms linear;
+    -wekbit-transition: all 500ms linear;
+    transition: all 500ms linear;
+  }
+
+  #blog .blog-thumb:focus,  #blog .blog-thumb:hover{
+    -webkit-box-shadow: 10px 10px 115px -40px #65ddf57b;
+    -moz-box-shadow: 10px 10px 115px -40px #65ddf57b;
+    box-shadow: 10px 10px 115px -40px #65ddf57b;
+    border: 2px solid #0085A1;
+    color: rgba(251,167,11,1);
+    text-align: center;
+    transition: all .2s ease-in-out;
+    transform:scale(1.01);
   }
    
   #blog .blog-thumb:hover .blog-date, #blog .blog-thumb:hover h3 a,
@@ -143,7 +199,7 @@ header.masthead {
     background: no-repeat center center;
     background-color: #6c757d;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-image: url('/assets/images/pexels-the-th-179912.jpg')
   }
   header.masthead:before {

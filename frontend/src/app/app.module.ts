@@ -27,6 +27,9 @@ import { RootComponent } from './components/root/root.component';
 import { RootdashComponent } from './components/rootdash/rootdash.component';
 import { RoleupdateComponent } from './components/roleupdate/roleupdate.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './guards/auth.guard';
+import { HasRoleGuard } from './guards/has-role.guard';
+import { RootGuard } from './guards/root.guard';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule  ],
-  providers: [AuthService,PostdataService,
+  providers: [AuthService,AuthGuard,HasRoleGuard,RootGuard,PostdataService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
