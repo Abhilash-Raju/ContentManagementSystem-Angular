@@ -10,7 +10,8 @@ main{
   background-attachment: fixed;
   /* background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg') */
   /* background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg'); */
-  background-image: url('/assets/images/milad-fakurian-E8Ufcyxz514-unsplash.jpg');
+  /* background-image: url('/assets/images/milad-fakurian-E8Ufcyxz514-unsplash.jpg'); */
+  background-image: url('/assets/images/solen-feyissa-mfrDGn5juqs-unsplash.jpg');
 
 }
 hr {
@@ -74,11 +75,11 @@ header.masthead {
   background-color: rgb(56, 143, 134);
   opacity: 0.5;
 } */
-header.masthead .page-heading,
+/* header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
   color: #fff;
-}
+} */
 header.masthead .page-heading,
 header.masthead .site-heading {
   text-align: center;
@@ -87,11 +88,12 @@ header.masthead .page-heading h1, header.masthead .page-heading .h1,
 header.masthead .site-heading h1,
 header.masthead .site-heading .h1 {
   font-size: 3rem;
+  font-weight: bold;
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
+  font-weight: bolder;
   font-size: 1.5rem;
-  font-weight: 300;
   line-height: 1.1;
   display: block;
   margin-top: 0.625rem;
@@ -115,7 +117,7 @@ header.masthead .post-heading .meta {
   font-style: italic;
 }
 header.masthead .post-heading .meta a {
-  color: #fff;
+  /* color: #fff; */
 }
 @media (min-width: 992px) {
   header.masthead {
@@ -184,7 +186,7 @@ header.masthead .site-heading .h1 {
   font-size: 1.125rem;
   font-style: italic;
   margin-top: 0;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 .post-preview > .post-meta > a {
   text-decoration: none;
@@ -220,7 +222,7 @@ header.masthead .site-heading .h1 {
 #blog .blog-thumb:hover h3 a
 { 
   overflow: hidden;
-  color: #fffefd ;
+  color: #1c625b ;
   transition: all .2s ease-in-out;
   transform:scale(1.01)  ;
 }

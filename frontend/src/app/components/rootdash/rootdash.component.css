@@ -1,78 +1,32 @@
-.sidebar {
-    width: max(250px, 20vw);
-    background: #a74086;
-    height: 100vh;
-    margin-top: 85px;
-  }
-  
-  .sidebar .side-header {
-    margin: 0 auto;
-    padding: 1em 4em 1em 0em;
-    width: max-content;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 90%;
-  }
-  .side-header h1,
-  .side-header p {
-    margin: 0;
-    color: white;
-  }
-  
-  .side-header p {
-    text-align: right;
-  }
-  
-  .sidenav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 80%;
-    position: relative;
-    margin-top: 0.3em;
-  }
-  .sidenav .button-container {
-    width: 100%;
-    display: contents;
-  }
-  
-  .button:nth-child(10) {
-    margin-top: auto;
-  }
-  
-  .sidenav .checkbox {
-    position: absolute;
-    z-index: -1;
-  }
-  a {
-    text-decoration: none;
-    color: black;
-  }
-  .sidenav a {
-    display: block;
-    color: white;
-    padding: 16px;
-    text-decoration: none;
-  }
-  .sidenav a:hover {
-    transition: all 0.5s;
-    background: linear-gradient(45deg, lightgrey, transparent);
-    box-sizing: border-box;
-    transition-timing-function: cubic-bezier(0, 1.04, 0, 1.14);
-  }
-  @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-  
-  @media screen and (max-width: 400px) {
-    .sidebar a {
-      text-align: center;
-      float: none;
-    }
-  }
+.container{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg') */
+  background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg');
+  padding: 0 50px 85px 50px;
+  border-radius: 10px;
+  position: absolute;
+  margin: auto;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0 50px 85px 50px;
+
+}
+
+.container .sidebar{
+  text-align: center;
+}
+
+.container .sidebar .side-header{
+  margin-top:50px;
+  padding-bottom: 20px;
+}
+.container .row .col-12{
+  text-align:  center;
+  margin-left: auto;  
+  margin-right: auto;  
+  border-collapse: collapse;   
+
+}

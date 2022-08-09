@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit {
       cats:any;
 
 
-      postModel= new Post(0,"","","","","","","","");
+      postModel= new Post(0,"","","","","","");
 
         ngOnInit():void {
           this._cat.allCategory().subscribe((data)=>{

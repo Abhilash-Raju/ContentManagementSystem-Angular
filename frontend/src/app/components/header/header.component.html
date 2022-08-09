@@ -11,8 +11,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" *ngIf="!_authService.loggedIn()">Home</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' *ngIf="!_authService.loggedIn()">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("services")' *ngIf="!_authService.loggedIn()">Services</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' *ngIf="!_authService.loggedIn()">About Us</a></li>
                 <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="contactus" *ngIf="_authService.loggedIn()">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="dashboard" *ngIf="_authService.loggedIn()">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="root/rootprofile"*ngIf="_authService.loggedIn()&&_authService.userRoleAccess()">Profile</a></li>

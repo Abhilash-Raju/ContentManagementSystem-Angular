@@ -6,8 +6,8 @@ header.masthead {
     background: no-repeat center center;
     background-color: #6c757d;
     background-size: cover;
-    background-attachment: scroll;
-    background-image: url('/assets/images/pexels-miguel-á-padriñán-1591056.jpg')
+    background-attachment: fixed;
+    background-image: url('/assets/images/marek-piwnicki-aenR2pxWKYk-unsplash.jpg')
   }
   header.masthead:before {
     content: "";
@@ -16,7 +16,7 @@ header.masthead {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #212529;
+    /* background-color: #212529; */
     opacity: 0.5;
   }
   header.masthead .page-heading,

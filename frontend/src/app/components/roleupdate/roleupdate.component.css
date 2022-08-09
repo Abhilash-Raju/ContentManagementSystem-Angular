@@ -1,0 +1,70 @@
+.container{
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0 50px 85px 50px;
+}
+
+ .container .card-header{
+    text-align: center;
+    font-weight: bold;
+  }
+
+.container .card{
+    margin: auto;  
+    border-collapse: collapse;  
+    border-radius: 10px;
+    background-color: rgba(232, 188, 11, 0.166);
+    font-size: 18px;
+}
+
+.container .card .table input{
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    outline: none;
+    font-size: 20px;
+    background: #fae9fb;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+
+.container .card .table  input:focus,
+.container .card .table input:valid{
+  border-color:  #24c2b8;
+  background-color: #fff;
+}
+
+.container .card .table input:invalid{
+    top: 100%;
+    color:  #c23e24;
+    padding: 0 4px;
+    background:  rgba(255, 255, 255, 1);
+    border-radius: 4px;
+  }
+
+  .container .card .table input[type="submit"]{
+    background:  #b2eed09c;
+    padding-left: 0;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  .container .card .table  input[type="submit"]:hover{
+      color: #fff;
+      font-weight: bold;
+      background-color:  #37736f;
+    transition: all .2s ease-in-out;
+  }
+
+  table {
+    border-collapse: collapse;
+}
+table, tr, td {
+    border: none;
+}

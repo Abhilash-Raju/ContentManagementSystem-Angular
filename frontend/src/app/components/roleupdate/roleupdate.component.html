@@ -1,42 +1,44 @@
+<div class="container">
+  <div class='card'>
+      <form (ngSubmit)="editRoles()">
+          <div class='card-header'>
+          Edit Profile
+          </div>
+          <div class='card-body'>            
+            <div class='table-responsive'>
+              <table class='table'>       
+              
+                <tbody>  
+                    <tr>
+                        <td> <label>User Name</label></td>
+                        <td><input type="text" name="username" [(ngModel)]="userInstance.username" /></td>                  
+                      </tr>   
 
-<br><br><br><br><br>
-<div class='card'>
-    <form (ngSubmit)="editRoles()">
-<div class='card-header'>
- Edit Profile
-</div>
-<div class='card-body'>            
-  <div class='table-responsive'>
-    <table class='table'>       
-    
-      <tbody>  
-          <tr>
-              <td> <label>User Name</label></td>
-              <td><input type="text" name="username" [(ngModel)]="userInstance.username" /></td>                  
-            </tr>   
-           <tr>
-                <td><label>Email</label></td>
-                <td><input type="text" name="email"[(ngModel)]="userInstance.email"/></td>                  
-              </tr>  
-              <tr>
-                <td><label>User Role</label></td>
-                <td><input type="text" name="role"  disabled [(ngModel)]="userInstance.role"/></td>                  
-              </tr>  
-              <tr>
-                <td><label>CheckBox</label></td>
-                <small>Checked Box signifies Admin role</small>
-                <td><input type="checkbox" name="sub" [(ngModel)]="userInstance.sub"/></td>                  
-              </tr>  
+                    <tr>
+                          <td><label>Email</label></td>
+                          <td><input type="text" name="email"[(ngModel)]="userInstance.email"/></td>                  
+                        </tr>  
 
-              <tr>
-                <td></td>
-                <td><input type="submit"  value="Submit" /></td>                  
-              </tr>             
-      </tbody>
-    </table>
+                        <tr>
+                          <td><label>User Role</label></td>
+                          <td><input type="text" name="role"  disabled [(ngModel)]="userInstance.role"/></td>                  
+                        </tr>  
+                        
+                        <tr>
+                          <td><label>CheckBox <i>(Select checkbox to assign the role as Admin)</i> </label></td>
+                          <td><input type="checkbox" name="sub" [(ngModel)]="userInstance.sub"/></td>                  
+                        </tr>  
+          
+                        <tr>
+                          <td></td>
+                          <td><input type="submit"  value="Submit" /></td>                  
+                        </tr>             
+                </tbody>
+              </table>
+            </div>
+          </div>
+  </form>
   </div>
-</div>
-</form>
 </div>
 
 

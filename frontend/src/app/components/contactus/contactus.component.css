@@ -5,10 +5,9 @@ header.masthead {
     padding-top: calc(8rem + 57px);
     padding-bottom: 8rem;
     background: no-repeat center center;
-    background-color: #6c757d;
     background-size: cover;
     background-attachment: scroll;
-    background-image: url('/assets/images/contact-bg.jpg')
+    background-image: url('/assets/images/thugbong-wak5wn2JDz4-unsplash.jpg')
   }
   header.masthead:before {
     content: "";
@@ -17,7 +16,6 @@ header.masthead {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #212529;
     opacity: 0.5;
   }
   header.masthead .page-heading,
@@ -41,7 +39,6 @@ header.masthead {
     line-height: 1.1;
     display: block;
     margin-top: 0.625rem;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
   header.masthead .post-heading h1, header.masthead .post-heading .h1 {
     font-size: 2.25rem;
@@ -55,13 +52,11 @@ header.masthead {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0.75rem 0 2rem;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
   header.masthead .post-heading .meta {
     font-size: 1.25rem;
     font-weight: 300;
     font-style: italic;
-    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
   header.masthead .post-heading .meta a {
     color: #fff;
@@ -180,7 +175,6 @@ textarea.form-control {
 
 .btn {
     display: inline-block;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 800;
     line-height: 1.5;
     color: #212529;

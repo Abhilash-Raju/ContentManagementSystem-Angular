@@ -4,9 +4,6 @@ const postRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const PostData = require('../models/post');
 let alert = require('alert'); 
-const multer=require('multer')
-const path = require('path');
-var fs = require('fs');
 const cors = require('cors');
 var bodyparser=require('body-parser');
 var LocalStorage = require('node-localstorage').LocalStorage,
@@ -29,51 +26,6 @@ console.log("in addPostRoutes");
   }));
 
 
-
-
-var dir = '../frontend/src/assets/images';
-
-if (!fs.existsSync(dir)){
-  // console.log("new: "+dir);
-    fs.mkdirSync(dir);
-}
-// console.log("old: "+dir);
-
-postRouter.use('/images', express.static(path.join('../frontend/src/assets/images/files')));
-const storage = multer.diskStorage({
-  destination:(req,file, callback)=>{
-    callback(null, '../frontend/src/assets/images/files')
-  },
-  filename:(req, file, callback)=>{
-    callback(null, file.fieldname+Date.now()+path.extname(file.originalname));
-  }
-})
-var upload = multer({
-  storage: storage,
-  limits:{
-    fileSize: 10000000  //upto 10MB files only
-  },
-  fileFilter:function(req,file,callback){
-    checkFileType(file, callback);
-  }
-})
-
-//Check file type
-function checkFileType(file, callback){
-// allowed extension
-// const filetypes = /jpeg|jpg|png|gif/;
-const filetypes = /jpeg|jpg|png|gif/;
-//check extension
-const extname=filetypes.test(path.extname(file.originalname).toLowerCase());
-//check mime
-const mimetype=filetypes.test(file.mimetype);
-if(mimetype&&extname){
-  return callback(null, true);
-}else{
-  callback('Error: Images only');
-}
-}
-
 // Single Post //
     postRouter.get('/:id', verifyToken,  (req, res) => {
     const id = req.params.id;
@@ -92,9 +44,7 @@ if(mimetype&&extname){
     })    
 
 // Create Post //
-    postRouter.post('/insert',verifyToken, upload.fields([
-      {name: "image", maxCount: 1},
-    ]),(req,res)=>{
+    postRouter.post('/insert',verifyToken,(req,res)=>{
       res.header("Access-Control-Allow-Origin","*")
       res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
 
@@ -108,7 +58,6 @@ if(mimetype&&extname){
         }       
 
         console.log(`This is the user ${localStorage.getItem('user')}`);
-        // postImagePath : req.files.image[0].filename,
      var post = new PostData(post);
      console.log(post)
      post.save()
@@ -140,10 +89,7 @@ if(mimetype&&extname){
   
 // Updating a Post //
 
-  postRouter.put('/update',verifyToken, upload.fields([
-    {name: "file", maxCount: 1},
-    {name: "image", maxCount: 1},
-  ]),(req,res)=>{
+  postRouter.put('/update',verifyToken,(req,res)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
     console.log(req.body)

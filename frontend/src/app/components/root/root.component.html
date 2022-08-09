@@ -1,7 +1,7 @@
 <div class='card'>
     <br>
-    <div class='card-header'>
-     PROFILE VIEW
+    <div class='head'>
+     Profile List
     </div>
     <div class='card-body'>            
       <div class='table-responsive'>
@@ -11,7 +11,6 @@
               <th>User Name</th>
               <th>Email</th>
               <th>User Role</th>
-              <!-- <th>Contact</th> -->
             </tr>
            
           </thead>
@@ -20,7 +19,6 @@
                   <td>{{i.username}}</td>
                   <td>{{i.email}}</td>
                   <td>{{i.role}}</td>
-                  <!-- <td>{{i.contactno}}</td> -->
                   <td>
                     <button class="btn btn-warning mx-3" style="cursor:pointer" (click)="editRole(i)" style="margin-left:20px;"> Edit</button>
                     <button class="btn btn-danger" style="cursor:pointer"(click)="deleteUser(i)"> Delete</button>

@@ -18,9 +18,6 @@ const postSchema = new Schema({
         type:String, 
         unique:true ,
         required: true
-    }, 
-    postImagePath: {
-        type:String
     },
     date: {
         type: String,
