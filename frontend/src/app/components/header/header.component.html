@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg p-3 navbar-light" id="mainNav">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand">
-            <img src="/assets/images/63f0eaab4f7e47e5e967075faae017c2--health-logo-graphic-design-blogs.jpg" alt="Fit'N'Healthy" style="border-radius: 50%;" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="/assets/images/63f0eaab4f7e47e5e967075faae017c2--health-logo-graphic-design-blogs.jpg" alt="Fit'N'Healthy" width="30" height="24" class="d-inline-block align-text-top">
             Fit<span class="text-danger">'N'</span>Healthy
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,16 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" *ngIf="!_authService.loggedIn()">Home</a></li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" *ngIf="!_authService.loggedIn()">Home</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("services")' *ngIf="!_authService.loggedIn()">Services</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' *ngIf="!_authService.loggedIn()">About Us</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="contactus" *ngIf="_authService.loggedIn()">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="dashboard" *ngIf="_authService.loggedIn()">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="root/rootprofile"*ngIf="_authService.loggedIn()&&_authService.userRoleAccess()">Profile</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="posts"  *ngIf="_authService.loggedIn()">Posts</a></li>
-                <!-- <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="post">Post</a></li> -->
-                <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="categories" *ngIf="_authService.loggedIn()">Categories</a></li>
-                <!-- <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="category">Category</a></li> -->
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="contactus" *ngIf="_authService.loggedIn()">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="dashboard" *ngIf="_authService.loggedIn()">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="root/rootprofile"*ngIf="_authService.loggedIn()&&_authService.userRoleAccess()">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="posts"  *ngIf="_authService.loggedIn()">Posts</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="categories" *ngIf="_authService.loggedIn()">Categories</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="createpost"  *ngIf="_authService.loggedIn()">New Post</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="addcategory"  *ngIf="_authService.loggedIn()">Add Category</a></li> -->
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!_authService.loggedIn()">Log In</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register" *ngIf="!_authService.loggedIn()">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.loggedOutUser()">Log Out</a></li>

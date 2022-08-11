@@ -6,7 +6,7 @@
   font-family: 'Poppins',sans-serif;
 }
 .container{
-  z-index: 12;
+  z-index: 1;
   max-width: 1050px;
   width: 100%;
   background: #fff;
