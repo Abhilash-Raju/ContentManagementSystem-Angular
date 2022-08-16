@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategorydataService } from 'src/app/services/categorydata.service';
+import { PostdataService } from 'src/app/services/postdata.service';
 import { Category } from '../models/categorymodel';
+import { Post } from '../models/postmodel';
 
 @Component({
   selector: 'app-category',
@@ -12,13 +14,23 @@ import { Category } from '../models/categorymodel';
 export class CategoryComponent implements OnInit {
 
   cat: Category[]=[];
+  posts: Post[]=[];
 
   
   categoryItem={
     category:"",
      about: ""
   }
-  constructor(private _categoryservice: CategorydataService, private router:Router,public _authservice:AuthService) { }
+
+  postItem={
+    head:"",
+    subhead:"",
+    body:"",
+    authorname: "",
+    date: "",
+    category: ""   
+  }
+  constructor(private _postservice:PostdataService,private _categoryservice: CategorydataService, private router:Router,public _authservice:AuthService) { }
 
   ngOnInit(): void {
     let catId = localStorage.getItem("categoryid");
@@ -26,7 +38,19 @@ export class CategoryComponent implements OnInit {
     this.categoryItem=JSON.parse(JSON.stringify(data));
     console.log(this.categoryItem)
   })
+
+  //   let postId = localStorage.getItem("postid");
+  //   this._postservice.getPost(postId).subscribe((data)=>{
+  //   this.postItem=JSON.parse(JSON.stringify(data));
+  // })
+  //     this._postservice.getPosts().subscribe((data)=>{
+  //       this.posts=JSON.parse(JSON.stringify(data));
+  //     })
   }
+
+  // check(){
+  //   return this.categoryItem.category===this.postItem.category ? true:false
+  // }
 
   
   editCategory(category:any)
@@ -48,6 +72,11 @@ export class CategoryComponent implements OnInit {
     }
   }
 
+  
+  singlepost(post:any){
+    localStorage.setItem("postid", post._id.toString());
+    this.router.navigate(['post']);
+  }
 
 
 }

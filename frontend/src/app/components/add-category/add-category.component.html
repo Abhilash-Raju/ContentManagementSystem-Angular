@@ -1,4 +1,8 @@
-        <form  (ngSubmit)="categoryForm.valid&&createCategory()" #categoryForm="ngForm">
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+   <form  (ngSubmit)="categoryForm.valid&&createCategory()" #categoryForm="ngForm">
             <div class="topic pb-2 fs-4"> <b> Add a Category</b></div>
 
             <div [ngClass]="getclassName()" >{{message}}</div>
@@ -6,7 +10,7 @@
             <div class="input-box form-group">
                 <input [class.is-invalid]="category?.invalid && category?.touched" class="form-control" name ="category" #category="ngModel" [(ngModel)]="categoryModel.category" type="text"  pattern="^[\w\s]{5,}$"  required>
                 <label>Enter Category</label>
-                <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted||category?.invalid && category?.touched">
+                <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted&&category?.invalid && category?.touched">
                 <label *ngIf="categoryForm.submitted&&category.errors?.['required']" class="text-danger">Category is Required</label>
                 <label *ngIf="category.errors?.['pattern']" class="text-danger">Invalid Category</label>
                 </div> 
@@ -16,7 +20,7 @@
             <div class="input-box form-group">
                 <input [class.is-invalid]="about?.invalid && about?.touched" class="form-control py-3" name ="about" #about="ngModel" [(ngModel)]="categoryModel.about" type="text"  pattern='^[\w\s,!@$%&*\)\(+=._-]{8,}$'  required/>
                 <label>Few Words About the Category</label>
-                <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted||about?.invalid && about?.touched">
+                <div class="check container mt-4 pt-1" *ngIf="categoryForm.submitted&&about?.invalid && about?.touched">
                 <label *ngIf="categoryForm.submitted&&about.errors?.['required']" class="text-danger">Details About Category is Required</label>
                 <label *ngIf="about.errors?.['pattern']" class="text-danger">Invalid Detail</label>
                 </div> 
@@ -29,3 +33,7 @@
             <input type="submit" class="button my-3" value="Submit">
             </div>
         </form>
+    </div>
+</div>
+</div>
+</main>

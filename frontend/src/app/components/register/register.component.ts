@@ -62,9 +62,7 @@ export class RegisterComponent implements OnInit {
           this.message='Account created'
           console.log(this.message)
           this.className='alert alert-success'
-          setTimeout(function(){
-            window.location.reload();
-         }, 3000);
+          this._router.navigate(['/login'])
         }else 
         {          
           this.message=res.message;

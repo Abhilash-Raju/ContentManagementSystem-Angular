@@ -42,12 +42,9 @@ export class AddCategoryComponent implements OnInit {
             this.message='Category created'          
             console.log(this.message)
             this.className='alert alert-success'
-            // alert("Category Created ")
-            setTimeout(function(){
-              window.location.reload();
-           }, 3000);     
-        }else 
-        {
+            this.router.navigate(['/categories'])
+          }else 
+          {
           this.message=res.message;
          //alert("Category already exist or fields are empty")
           console.log(this.message);
@@ -61,10 +58,13 @@ export class AddCategoryComponent implements OnInit {
         (err:any) =>
         {
           this.message="Server Error";
-      //alert("server error")
+          //alert("server error")
           this.className='alert alert-info'
           //window.location.reload();
           console.log('Error!',err)
+          setTimeout(function(){
+            window.location.reload();
+         }, 3000);     
         }
         )
      // this.router.navigate(['/createpost']);    

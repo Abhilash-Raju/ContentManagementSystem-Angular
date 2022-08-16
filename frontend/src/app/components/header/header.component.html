@@ -13,12 +13,12 @@
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="home" *ngIf="!_authService.loggedIn()">Home</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("services")' *ngIf="!_authService.loggedIn()">Services</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" (click)='onClick("about")' *ngIf="!_authService.loggedIn()">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="contactus" *ngIf="_authService.loggedIn()">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="dashboard" *ngIf="_authService.loggedIn()">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="root/rootprofile"*ngIf="_authService.loggedIn()&&_authService.userRoleAccess()">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="posts"  *ngIf="_authService.loggedIn()">Posts</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="categories" *ngIf="_authService.loggedIn()">Categories</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="createpost"  *ngIf="_authService.loggedIn()">New Post</a></li>
+                <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="contactus" *ngIf="_authService.loggedIn()">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!_authService.loggedIn()">Log In</a></li>
                 <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="register" *ngIf="!_authService.loggedIn()">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.loggedOutUser()">Log Out</a></li>
