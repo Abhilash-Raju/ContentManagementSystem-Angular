@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
           this.className='alert alert-danger'
         }  
       },
-        (err:any) => {
+      (err:any) => {
           this.message="Server Error";
           console.log('Error!',err)
           this.className='alert alert-info'

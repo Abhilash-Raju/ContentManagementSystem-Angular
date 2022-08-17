@@ -37,6 +37,8 @@ button :hover{
     width: 100%;
     margin: 16px 0;
     position: relative;
+    animation: fadeDown ease-in-out 0.8s;
+
   }
 
   textarea { resize:none; }
@@ -101,3 +103,14 @@ button :hover{
     border-radius: 100%;
     }
 
+    @keyframes fadeDown{
+      from{
+        opacity: 0;
+        transform: translateY(20%);
+      }
+      to{
+        transform: translateY(0);
+        opacity: 1;
+    
+      }
+    }

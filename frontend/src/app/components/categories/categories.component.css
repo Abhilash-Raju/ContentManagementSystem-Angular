@@ -8,7 +8,6 @@ header.masthead {
   background-size: cover;
   background-attachment: fixed;
   background-image: url('/assets/images/pawel-czerwinski-VSu6X0Y986o-unsplash.jpg');
-  font-family: san;
 }
 header.masthead:before {
   content: "";
@@ -29,13 +28,14 @@ main{
   /* background-image: url('/assets/images/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg') */
   /* background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg'); */
   /* background-image: url('/assets/images/maxim-berg-hzLjGADWVSM-unsplash.jpg'); */
-
+  
 }
 
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
   color: #fff;
+  animation: fadeDown ease-in-out 1s;
 }
 header.masthead .page-heading,
 header.masthead .site-heading {
@@ -100,6 +100,7 @@ header.masthead .site-heading .h1 {
   padding: 10px 80px 40px 80px;
   border-radius: 20px;
   border: 2px solid rgb(228, 224, 224);
+  animation: slideIn ease-in-out 1s;
 }
 
 .post-preview:hover{
@@ -171,4 +172,30 @@ header.masthead .site-heading .h1 {
   color: #fba70b ;
   transition: all .2s ease-in-out;
   transform:scale(1.1);
+}
+
+   
+@keyframes fadeDown{
+  from{
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
+
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
 }

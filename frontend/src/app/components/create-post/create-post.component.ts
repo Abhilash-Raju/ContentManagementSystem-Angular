@@ -19,6 +19,7 @@ export class CreatePostComponent implements OnInit {
       message='';
       className=""
       cats:any;
+      submitted = false;
 
 
       postModel= new Post(0,"","","","","","");
@@ -32,6 +33,7 @@ export class CreatePostComponent implements OnInit {
         
         createPost()
         {
+          this.submitted = true;
           console.log(this.postModel.category)
         this._postserve.newPost(this.postModel)
         .subscribe(
@@ -40,8 +42,9 @@ export class CreatePostComponent implements OnInit {
               this.message='Post is created'          
               console.log(this.message)
               this.className='alert alert-success'
-              // alert("Post Created ")
-              this.router.navigate(['/posts']);
+              setTimeout(() => {
+                this.router.navigate(['posts']);
+            }, 2000);  
           }else 
           {
             this.message=res.message;

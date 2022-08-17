@@ -100,5 +100,14 @@ export class AuthService {
     return _roleAccess.subject.sub==true ? true : false
   }
 
+  User(){
+    var token=localStorage.getItem('token')||"";
+    var parse = atob(token.split('.')[1])
+   var _roleAccess= JSON.parse(parse);
+   if(_roleAccess.subject.username){
+     return _roleAccess.subject.username
+   }
+   return false
+  }
     
 }

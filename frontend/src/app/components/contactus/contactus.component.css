@@ -7,6 +7,7 @@ header.masthead {
     background: no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
+    animation: fadeDown ease-in-out 1s;
     background-image: url('/assets/images/thugbong-wak5wn2JDz4-unsplash.jpg')
   }
   header.masthead:before {
@@ -90,6 +91,7 @@ header.masthead {
 form{
   width: 100%;
   margin-right: 30px;
+  animation: slideIn ease-in-out 1s;
 }
 .input-box{
   height: 50px;
@@ -265,3 +267,29 @@ textarea.form-control {
     z-index: 3;
   }
   
+  
+   
+@keyframes fadeDown{
+  from{
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
+
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}

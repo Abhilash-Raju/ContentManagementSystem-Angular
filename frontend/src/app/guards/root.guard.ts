@@ -14,7 +14,7 @@ export class RootGuard implements CanActivate {
     return true;
     else
     {
-      this.route.navigate(['/dashboard'])
+      this.route.navigate(['dashboard'])
       return false 
     }
   }

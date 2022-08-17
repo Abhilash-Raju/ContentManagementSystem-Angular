@@ -29,7 +29,9 @@ export class EditcategoryComponent implements OnInit {
     this._cat.editCategory(this.categoryItem); 
     console.log(this.categoryItem); 
     alert("Category is updated successfully");
-    this.router.navigate(['categories']);
+    setTimeout(() => {
+      this.router.navigate(['categories']);
+  }, 2000);  
   }
 
   getclassName(){

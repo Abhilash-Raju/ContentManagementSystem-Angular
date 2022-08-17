@@ -9,13 +9,14 @@ form {
     padding: 50px;
     border-radius: 20px;
     border: 2px solid rgb(228, 224, 224);
-}
-
-p{
+  }
+  
+  p{
     justify-content: center;
-}
-
-.input-box{
+  }
+  
+  .input-box{
+  animation: fadeDown ease-in-out 1s;
     height: 50px;
     width: 100%;
     margin: 16px 0;
@@ -87,3 +88,17 @@ p{
     textarea{
       resize: none;
     }
+
+    
+   
+@keyframes fadeDown{
+  from{
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}

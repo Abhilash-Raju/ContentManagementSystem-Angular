@@ -89,7 +89,7 @@ router.post('/signup', (req,res)=>{
                 if (err.code === 11000) {
                   return res.json({ success: false, message: "Username or Email id already exists" })      
                 }
-                return res.json({ success: false, message: `Sign Up Failed ${err}` })
+                return res.json({ success: false, message: `Sign Up Failed,Please Enter Valid Details` })
               })
         }
       else{
@@ -101,7 +101,7 @@ router.post('/signup', (req,res)=>{
                 if (err.code === 11000) {
                   return res.json({ success: false, message: "Username or Email id already exists" })      
                 }
-                return res.json({ success: false, message: `Sign Up Failed ${err}` })
+                return res.json({ success: false, message: `Sign Up Failed, Please Enter Valid Details` })
               })
         }
     }
@@ -119,8 +119,8 @@ router.post('/signup', (req,res)=>{
         User.findOne({email : userData.email},(error,user)=>
         {
             if(error)
-            {
-                console.log(error);
+            {   
+                return res.json({ success: false, message: `Login Failed, Please Enter Valid Details` })
             }
             else
             if(!user)

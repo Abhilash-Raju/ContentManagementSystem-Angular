@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategorydataService } from 'src/app/services/categorydata.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CategorydataService } from 'src/app/services/categorydata.service';
 export class DashboardComponent implements OnInit {
   cats:any;
 
-  constructor(private _cat:CategorydataService) { }
+  constructor(private _cat:CategorydataService,public _auth:AuthService) { }
 
   ngOnInit(): void {
     this._cat.allCategory().subscribe((data)=>{

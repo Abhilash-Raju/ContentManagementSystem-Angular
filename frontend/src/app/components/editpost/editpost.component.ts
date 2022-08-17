@@ -36,7 +36,9 @@ export class EditpostComponent implements OnInit {
     this._postserve.editPost(this.postItem); 
     console.log(this.postItem); 
     alert("Post is updated successfully");
-    this.router.navigate(['posts']);
+    setTimeout(() => {
+              this.router.navigate(['posts']);
+          }, 2000);  
   }
 
   getclassName(){

@@ -8,6 +8,7 @@
     background-color: #6c757d;
     background-size: cover;
     background-attachment: scroll;
+    animation: fadeDown ease-in-out 1s;
     background-image: url('/assets/images/steve-johnson-63p1y8quqSs-unsplash.jpg')
   }
   header.masthead:before {
@@ -18,9 +19,7 @@
     right: 0;
     bottom: 0;
   }
-  header.masthead .page-heading {
-    color: #fff;
-  }
+ 
   header.masthead .page-heading {
     text-align: center;
   }
@@ -88,4 +87,30 @@
 
 #edit{
   margin-right: 20px;
+}
+
+   
+@keyframes fadeDown{
+  from{
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
+
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
 }

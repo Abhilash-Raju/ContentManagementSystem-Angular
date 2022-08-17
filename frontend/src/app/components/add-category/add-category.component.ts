@@ -41,8 +41,10 @@ export class AddCategoryComponent implements OnInit {
           if(res.success){
             this.message='Category created'          
             console.log(this.message)
-            this.className='alert alert-success'
-            this.router.navigate(['/categories'])
+            this.className='alert alert-success';
+            setTimeout(() => {
+              this.router.navigate(['categories']);
+          }, 2000);  
           }else 
           {
           this.message=res.message;

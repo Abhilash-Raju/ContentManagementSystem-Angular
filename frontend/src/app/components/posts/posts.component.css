@@ -22,6 +22,7 @@ header.masthead {
   header.masthead .page-heading,
   header.masthead .post-heading,
   header.masthead .site-heading {
+    animation: fadeDown ease-in-out 0.8s;
     color: #fff;
   }
   header.masthead .page-heading,
@@ -40,7 +41,6 @@ header.masthead {
     line-height: 1.1;
     display: block;
     margin-top: 0.625rem;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
   header.masthead .post-heading h1, header.masthead .post-heading .h1 {
     font-size: 2.25rem;
@@ -88,6 +88,7 @@ header.masthead {
     padding: 10px 80px 40px 80px;
     border-radius: 20px;
     border: 2px solid rgb(228, 224, 224);
+    animation: slideIn ease-in-out 0.8s;
   }
   
   .post-preview:hover{
@@ -133,3 +134,30 @@ header.masthead {
       font-size: 2.25rem;
     }
   }
+
+     
+   
+@keyframes fadeDown{
+  from{
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
+
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}

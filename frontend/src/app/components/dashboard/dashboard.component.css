@@ -12,7 +12,6 @@ main{
   /* background-image: url('/assets/images/luke-chesser-zFaSM1hz02c-unsplash.jpg'); */
   /* background-image: url('/assets/images/milad-fakurian-E8Ufcyxz514-unsplash.jpg'); */
   background-image: url('/assets/images/solen-feyissa-mfrDGn5juqs-unsplash.jpg');
-
 }
 hr {
   background-color: #dee2e6;
@@ -89,14 +88,17 @@ header.masthead .site-heading h1,
 header.masthead .site-heading .h1 {
   font-size: 3rem;
   font-weight: bold;
+  animation: fadeInUp ease-in-out 1s;
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
   font-weight: bolder;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   line-height: 1.1;
   display: block;
   margin-top: 0.625rem;
+  animation: fadeInUp ease-in-out 2s;
+
 }
 header.masthead .post-heading h1, header.masthead .post-heading .h1 {
   font-size: 2.25rem;
@@ -158,7 +160,8 @@ header.masthead .site-heading .h1 {
   border-radius: 20px;
   border: 2px solid rgb(228, 224, 224);
   background-color: rgba(241, 221, 221, 0.496);
-
+  animation: slideIn ease-in-out 1s;
+  animation-fill-mode: both;
 }
 .post-preview > a {
   color: #212529;
@@ -237,3 +240,29 @@ a {
 }
 
 /* Category Section End */
+
+   
+@keyframes fadeInUp{
+  from{
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
+  
+@keyframes slideIn{
+  from{
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}

@@ -1,3 +1,6 @@
+main{
+	animation: fadeInUp ease-in-out 1s;
+}
 thead{
     color:#337AB7;
 }
@@ -61,3 +64,15 @@ table, tr, td {
 #edit{
   margin-right: 20px;
 }
+
+@keyframes fadeInUp{
+	from{
+	  opacity: 0;
+	  transform: translateY(20%);
+	}
+	to{
+	  transform: translateY(0);
+	  opacity: 1;
+  
+	}
+  }
