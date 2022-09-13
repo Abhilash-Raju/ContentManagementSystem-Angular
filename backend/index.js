@@ -1,30 +1,24 @@
 // Import all the required modules
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const api = require('./routes/api');
+const dotenv = require('dotenv')
+const connectDB = require('./config/db')
 
+// Load Config File
+dotenv.config({path:'./config/config.env'})
 
 // Initialize the express app
 const app = express();
 
 //Set the port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Connecting to Database
-const db = "mongodb+srv://admin:1289lash@cmscluster.ia9hhvf.mongodb.net/CMSTest?retryWrites=true&w=majority";
 
-mongoose.connect(db, err=>{
-    if(err){
-        console.log('Error!' + err);
-    }
-    else{
-        console.log('Connected to MongoDB')
-    }
-});
-
+connectDB()
 
 // User cors for cross origin requests to get passed
 app.use(cors());
@@ -58,5 +52,5 @@ app.use('/posts',postRouter);
 
 //Listen on port 3000
 app.listen(port, () => {
-    console.log(`Server is running on port http://localhost:${port}`);
+    console.log(`Server is running in ${process.env.NODE_ENV} mode in port http://localhost:${port}`);
 });

@@ -2,7 +2,7 @@
     <div class="content">
     <form class="p-3"[formGroup]="loginForm" (ngSubmit)="loginUser()">
 
-            <div class="topic">Login</div>
+            <div class="topic text-center">Login</div>
 
             <div class="input-box form-group">
                 <input [class.is-invalid]="email?.invalid && email?.touched" class="form-control" formControlName ="email" type="email"  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$"  required>
@@ -23,7 +23,13 @@
                 </div>
             </div>
 
-            <div class="message-box">
+            <div class="col mb-2 p-2 fs-5 google rounded text-center">
+                <a >
+                  <i class="me-3 fab fa-google left"></i> Log in with Google
+                </a>
+            </div>
+
+            <div class="message-box text-center">
                 <label>Don't have an account?</label>
                 <a href="/register">Sign Up</a> here.
             </div>
